@@ -93,11 +93,11 @@ attachmentName <- "QLDmap.png"
 library(mailR)
 
 for (value in subscribers$run) {
-  email <- as.character(subscribers[value,1])
-  location <- as.character(subscribers[value,2])
-  lat <- as.numeric(subscribers[value,3])
-  lon <- as.numeric(subscribers[value,4])
-  hours_of_heat_stress <- as.character(round(predict(spline, cbind(lat,lon)),0))
+  email <- as.character(subscribers[value, 1])
+  location <- as.character(subscribers[value, 2])
+  lat <- as.numeric(subscribers[value, 3])
+  lon <- as.numeric(subscribers[value, 4])
+  hours_of_heat_stress <- as.character(round(predict(spline, cbind(lat, lon)),0))
   body_text <- paste("Hello from the Toowoomba Trio Your crops at",
                      location, "recieved",
                      hours_of_heat_stress,
@@ -112,7 +112,7 @@ for (value in subscribers$run) {
             attach.files = attachmentName,
             smtp = list(host.name = "smtp.gmail.com", port = 465, 
                         user.name = "toowoombatrio@gmail.com",
-                        passwd = "qwertyytrewq", ssl = TRUE),
+                        passwd = "", ssl = TRUE),
             authenticate = TRUE,
             send = TRUE)
   
