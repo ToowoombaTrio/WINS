@@ -35,4 +35,19 @@ if (!require("devtools")) {
 
 devtools::install_github("ToowoombaTrio/John_Conner")
 library("JohnConner")
+
+downscale()
+
+# Downscale the data
+BoM_SILO_data <- downscale()
+
+# Check against BoM data
+
+plot_density(BoM_SILO_data)
+
+rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
+
+mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
+
+
 ```

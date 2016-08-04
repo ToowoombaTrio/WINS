@@ -1,18 +1,4 @@
 
-<<<<<<< HEAD
-[![Travis-CI Build Status](https://travis-ci.org/ToowoombaTrio/John_Conner.svg?branch=master)](https://travis-ci.org/ToowoombaTrio/John_Conner)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ToowoombaTrio/John_Conner?branch=master&svg=true)](https://ci.appveyor.com/project/ToowoombaTrio/John_Conner)
-
-Saving Queensland crops from heat stress using OpenData since 2016!
-
-## Install this package
-To install this R package and recreate what we've done this weekend for Govhack2016. Install the package and check out our vignette that details how to recreate what we've done.
-
-```r
-install.packages("devtools", dependencies = TRUE)
-devtools::install_github("ToowoombaTrio/John_Conner")
-```
-=======
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 John\_Conner
 ============
@@ -39,5 +25,17 @@ if (!require("devtools")) {
 
 devtools::install_github("ToowoombaTrio/John_Conner")
 library("JohnConner")
+
+downscale()
+
+# Downscale the data
+BoM_SILO_data <- downscale()
+
+# Check against BoM data
+
+plot_density(BoM_SILO_data)
+
+rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
+
+mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
 ```
->>>>>>> master
