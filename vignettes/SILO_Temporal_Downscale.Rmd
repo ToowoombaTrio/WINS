@@ -53,6 +53,30 @@ head(QLD_SILO_and_hourly_stations)
 
 header_info <- QLD_SILO_and_hourly_stations[, 2]
 
+# get DEM data for QLD
+alt <- raster::getData(name = "alt", country = "Australia", path = "~/Downloads")
+
+# get outline of Australia
+Oz <- raster::getData(name = "GADM", download = TRUE, country = "AUS", level = 2)
+
+# Subset Australia data to QLD
+QLD <- Oz[Oz@data$NAME_1 == "Queensland", ]
+
+# crop and mask altitude data for only QLD
+QLD_alt <- raster::crop(alt, QLD)
+QLD_alt <- raster::mask(QLD_alt, QLD)
+
+# create the splined surface of temperatures to extract values
+
+for (i in 1:nrow(QLD_df)) {
+  tps_spline <- fields::Tps(data.frame(QLD_df$LONGITUDE, QLD_df$LATITUDE, QLD_df$STN_HT),
+                            QLD_df$hour_temp, lon.lat = TRUE)
+  
+  # interpolate thin plate spline object and write to disk
+  pred_temp <- interpolate(QLD_alt, tps_spline, xyOnly = FALSE)
+  
+}
+
 temp_threshold <- 30
 
 hours_of_high_temps <- c()
@@ -64,20 +88,9 @@ for (x in names(hourlyT[, 2:71])) {
 high_temps <- data.frame(names(hourlyT[, 2:71]), as.numeric(hours_of_high_temps))
 names(high_temps) <- c("station_number", "hours_of_high_temps")
 
-df <- plyr::join(high_temps, QLD_SILO_and_hourly_stations, by = "station_number", type = "left")
-head(df)
+QLD_df <- plyr::join(high_temps, QLD_SILO_and_hourly_stations, by = "station_number", type = "left")
+head(QLD_df)
 
-# create the surface to plot
-
-spline <- Tps(data.frame(df$LONGITUDE, df$LATITUDE), df$hours_of_high_temps)
-grid <- predictSurface(spline, nx = 2000, ny = 2000)
-predict(spline, cbind(151.9507, -27.5598))
-
-Oz <- getData("GADM", country = "AUS", level = 1)
-QLD <- Oz[Oz@data$NAME_1 == "Queensland", ]
-
-image.plot(grid, horizontal = TRUE)
-plot(QLD, add = TRUE)
 ```
 
 # Automated e-mails to subscribers
