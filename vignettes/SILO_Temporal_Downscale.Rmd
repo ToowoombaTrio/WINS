@@ -11,8 +11,8 @@ vignette: >
   
 # Downscale SILO Hourly Data and Visualise Quality of Predictions
   
-This document illustrates the useage of the JohnConner R package to downscale
-Queenslan SILO weather data from daily to hourly and send an e-mail alert to
+This document illustrates the usage of the JohnConner R package to downscale
+Queensland SILO weather data from daily to hourly and send an e-mail alert to
 subscribers, warning them of heat stress to their crop.
   
 ```{r, fig.width=5, fig.height=5}
