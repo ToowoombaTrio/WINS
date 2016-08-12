@@ -57,10 +57,10 @@ header_info <- QLD_SILO_and_hourly_stations[, 2]
 alt <- raster::getData(name = "alt", country = "Australia", path = "~/Downloads")
 
 # get outline of Australia
-Oz <- raster::getData(name = "GADM", download = TRUE, country = "AUS", level = 2)
+Oz <- raster::getData(name = "GADM", download = TRUE, country = "AUS", level = 1)
 
 # Subset Australia data to QLD
-QLD <- Oz[Oz@data$NAME_1 == "Queensland", ]
+QLD <- which(Oz@data$NAME_1 == "Queensland")
 
 # crop and mask altitude data for only QLD
 QLD_alt <- raster::crop(alt, QLD)
