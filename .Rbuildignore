@@ -3,9 +3,7 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^appveyor\.yml$
-<<<<<<< HEAD
 ^revdep$
-=======
 ^README\.Rmd$
 ^README-.*\.png$
->>>>>>> master
+^\Mitsubishi
