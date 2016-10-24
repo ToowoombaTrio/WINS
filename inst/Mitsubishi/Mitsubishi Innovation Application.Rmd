@@ -1,5 +1,5 @@
 ---
-title: "Mitsubishi Innovation Application"
+title: "Hitachie Innovation Application"
 author: "K Pembleton and A H Sparks"
 date: "`r Sys.Date()`"
 output: word_document
