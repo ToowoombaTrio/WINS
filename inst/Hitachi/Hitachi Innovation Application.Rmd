@@ -104,15 +104,16 @@ specialises in crop disease and weather modelling. Previously, while working at
 the International Rice Research Institute (IRRI) in Los Baños, Philippines,
 A/Prof Sparks was involved in several projects in developing countries which
 made use of mobile technology to collect and disseminate data and cloud
-computing systems like Amazon Web Services (AWS). While Dr Keith Pembleton is
-the leader of USQ’s Agricultural Systems Modelling Research Group and
-specialises in crop modelling and the design and use of decision support tools
-in agriculture. These expertise along with the early stage prototype virtually
-ensure that the technology itself can be implemented. The project has a high
-chance of having a sizable impact at a local and global level. Seventy-five
-percent of the world’s population have access to a mobile phone. Our text
-messaging/email alert system is a low data use system, which removes data cost
-and speed as a barrier to farmers accessing our solution. Text message systems
-have been proven to work in natural disaster warning systems in both developed
-and developing countries, proving this approach to disseminating information and
-getting it acted upon is viable.
+computing systems like Amazon Web Services (AWS), e.g. the Philppine Rice
+Information System (PRiSM, http://www.philippinericeinfo.ph/). While Dr Keith
+Pembleton is the leader of USQ’s Agricultural Systems Modelling Research Group
+and specialises in crop modelling and the design and use of decision support
+tools in agriculture. These expertise along with the early stage prototype
+virtually ensure that the technology itself can be implemented. The project has
+a high chance of having a sizable impact at a local and global level.
+Seventy-five percent of the world’s population have access to a mobile phone.
+Our text messaging/email alert system is a low data use system, which removes
+data cost and speed as a barrier to farmers accessing our solution. Text message
+systems have been proven to work in natural disaster warning systems in both
+developed and developing countries, proving this approach to disseminating
+information and getting it acted upon is viable.
