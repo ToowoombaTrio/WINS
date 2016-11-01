@@ -1,5 +1,5 @@
 ---
-title: "Using the John Conner Package to Downscale SILO Data"
+title: "Using the WINS Package to Downscale SILO Data"
 author: "The ToowoombaTrio"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
