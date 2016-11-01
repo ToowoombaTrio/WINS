@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Travis-CI Build Status](https://travis-ci.org/ToowoombaTrio/WINS.svg?branch=master)](https://travis-ci.org/ToowoombaTrio/WINS) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ToowoombaTrio/WINS?branch=master&svg=true)](https://ci.appveyor.com/project/ToowoombaTrio/WINS)
+
 WINS - crop stress *W*eather *IN*formation delivery *S*ystem
 ============================================================
-
-[![Travis-CI Build Status](https://travis-ci.org/ToowoombaTrio/John_Conner.svg?branch=master)](https://travis-ci.org/ToowoombaTrio/John_Conner) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ToowoombaTrio/John_Conner?branch=master&svg=true)](https://ci.appveyor.com/project/ToowoombaTrio/John_Conner)
 
 About
 -----
