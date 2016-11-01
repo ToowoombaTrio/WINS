@@ -35,8 +35,14 @@ if (!require("devtools")) {
 
 devtools::install_github("ToowoombaTrio/John_Conner")
 library("JohnConner")
+```
 
-downscale()
+```{r, echo=FALSE}
+library(JohnConner)
+```
+Perform temporal downscaling and data checks and comparison
+
+```{r, messages=FALSE}
 
 # Downscale the data
 BoM_SILO_data <- downscale()
@@ -48,6 +54,5 @@ plot_density(BoM_SILO_data)
 rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
 
 mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
-
 
 ```

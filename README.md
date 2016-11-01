@@ -25,8 +25,11 @@ if (!require("devtools")) {
 
 devtools::install_github("ToowoombaTrio/John_Conner")
 library("JohnConner")
+```
 
-downscale()
+Perform temporal downscaling and data checks and comparison
+
+``` r
 
 # Downscale the data
 BoM_SILO_data <- downscale()
@@ -34,8 +37,15 @@ BoM_SILO_data <- downscale()
 # Check against BoM data
 
 plot_density(BoM_SILO_data)
+```
+
+![](README-unnamed-chunk-4-1.png)
+
+``` r
 
 rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
+#> [1] 3.65625
 
 mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
+#> [1] 2.571315
 ```
