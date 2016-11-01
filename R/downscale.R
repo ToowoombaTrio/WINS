@@ -15,7 +15,6 @@
 #' @importFrom foreach %dopar%
 #'
 #' @export
-#'
 downscale <- function() {
   
   station_number <- NULL
