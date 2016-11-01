@@ -1,4 +1,4 @@
-Package: JohnConner
+Package: WINS
 Type: Package
 Title: Toowoomba Trio Entry for Govhack2016
 Version: 0.0.1
@@ -10,8 +10,8 @@ Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
     person("Gordon", "Grundy", role = "ctb",
     email = "gordongrundy@gmail.com"))
 Maintainer: Adam Sparks <adamhsparks@gmail.com>
-URL: https://github.com/ToowoombaTrio/John_Conner
-BugReports: https://github.com/ToowoombaTrio/John_Conner/issues
+URL: https://github.com/ToowoombaTrio/WINS
+BugReports: https://github.com/ToowoombaTrio/WINS/issues
 Description: Use QLD SILO data to generate hourly data. Validated using BoM data.
 Depends:
     R (>= 3.2.0)
@@ -40,6 +40,7 @@ NeedsCompilation: no
 Repository: CRAN
 LazyData: TRUE
 ByteCompile: TRUE
-Suggests: knitr,
+Suggests:
+    knitr,
     rmarkdown
 VignetteBuilder: knitr

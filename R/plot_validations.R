@@ -23,5 +23,5 @@ plot_density <- function(BoM_SILO_data) {
     ggplot2::xlab("SILO Downscaled (Predicted, degrees C)") +
     ggplot2::ylab("BoM Hourly (Actual Values, degrees C)") +
     ggplot2::ggtitle("Density of Predicted\nVersus Actual Values") +
-    ggplot2::theme(text = ggplot2::element_text(size = 5))
+    ggplot2::theme(text = ggplot2::element_text(size = 10))
 }

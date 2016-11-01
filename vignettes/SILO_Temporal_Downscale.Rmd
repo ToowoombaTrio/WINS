@@ -17,7 +17,7 @@ subscribers, warning them of heat stress to their crop.
   
 ```{r, fig.width=5, fig.height=5}
   
-  library(JohnConner)
+  library(WINS)
   BoM_SILO_data <- downscale()
   plot_density(BoM_SILO_data)
   
@@ -81,15 +81,15 @@ temp_threshold <- 30
 
 hours_of_high_temps <- c()
 
-for (x in names(hourlyT[, 2:71])) {
-  hours_of_high_temps <- c(hours_of_high_temps, length(hourlyT[, x][hourlyT[, x] > temp_threshold]))
-}
-
-high_temps <- data.frame(names(hourlyT[, 2:71]), as.numeric(hours_of_high_temps))
-names(high_temps) <- c("station_number", "hours_of_high_temps")
-
-QLD_df <- plyr::join(high_temps, QLD_SILO_and_hourly_stations, by = "station_number", type = "left")
-head(QLD_df)
+# for (x in names(hourlyT[, 2:71])) {
+#   hours_of_high_temps <- c(hours_of_high_temps, length(hourlyT[, x][hourlyT[, x] > temp_threshold]))
+# }
+# 
+# high_temps <- data.frame(names(hourlyT[, 2:71]), as.numeric(hours_of_high_temps))
+# names(high_temps) <- c("station_number", "hours_of_high_temps")
+# 
+# QLD_df <- plyr::join(high_temps, QLD_SILO_and_hourly_stations, by = "station_number", type = "left")
+# head(QLD_df)
 
 ```
 
