@@ -1,6 +1,6 @@
 Package: WINS
 Type: Package
-Title: Toowoomba Trio Entry for Govhack2016
+Title: Crop Stress Weather Information Delivery System
 Version: 0.0.1
 Date: 2016-07-31
 Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
