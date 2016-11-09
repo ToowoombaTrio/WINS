@@ -14,81 +14,21 @@ knitr::opts_chunk$set(echo = TRUE)
 Optional video up to 3 minutes that provides a summary of you, your team and
 idea for a wider audience to vote. (300 words max)*
 
-Over $10 billion dollars’ worth of crops are lost globally to extreme weather
-events (e.g., heat waves, frosts) every year. This is enough to feed 500 million
-hungry mouths. While early forecasting of extreme weather events is becoming 
-increasingly sophisticated and accurate, this is not translated into on-farm
-actions to mitigate the impacts of extreme weather events. There are two key
-reasons for this, weather forecasts do not convey any indication of the likely
-level of crop stress and farmers often do not have the time to seek out and
-interpret weather forecast information and then convert it into actionable
-information. Our project is removing these two barriers to farmers. Firstly, we
-do the interpretation converting a weather forecast into a likely level of crop
-stress that could lead to damage. If there is an event that is likely to cause
-crop damage a text message or email alert is sent to the farmer via their smart
-phone. By providing this alert several days prior to the likely stress event,
-farmers have the time to undertake some preventive action (e.g., harvest early
-or apply mitigating irrigations) to minimise the damage and hence save their
-crop. This system is designed to operate autonomously, the only thing a farmer
-has to do is sign up. By using a range of weather forecasts and data feeds,
-computation tools and weather and agricultural models we can identify when a
-particular weather event is likely to result in crop stress. A significant
-proportion of crop losses are preventable. By ensuring that farmers are warned
-early enough we can help boost food production, improving their livelihoods and
-helping feed a growing global population.
+Over $10 billion dollars' worth of crops are lost globally to extreme weather events (e.g., heat waves or frosts) every year. This is enough to feed 500 million people. A significant number of these crop failures are preventable if action is taken in a timely manner. While early forecasting of extreme weather is becoming increasingly sophisticated and accurate, this unfortunately is not translated into actions to mitigate the impacts of extreme weather. There are two key reasons for this, weather forecasts themselves do not convey any indication of the level of crop stress and farmers often lack the time and resources to interpret weather forecast data into actionable information. Our research removes these two barriers to farmers using weather forecasts so they can take timely actions that will prevent crop failures. We are using a range of weather data feeds and computational and crop modelling methodologies to interpret and convert weather forecasts into a crop stress forecast. Secondly, if there is a forecast for an event that is likely to cause crop damage a text message or email alert is sent to the farmer via their smart phone. By providing this alert several days prior to the stress event we ensure that farmers have the opportunity to undertake some preventative actions to minimise damage (e.g., harvest early or apply mitigating irrigation) and hence save their crops. The system is designed to operate autonomously. The only thing a farmer has to do is subscribe by providing an email address or mobile phone number and their location. Our system is helping farmers make the right decisions at the right time to prevent crop losses due to extreme weather. This will boost food production, improve the livelihoods of farmers and their communities and help feed a growing global population.
 
 ## Innovation
 *How is your project innovative? Please compare it with current approaches. Only
 judges and organisers will see this section. (500 words max)*
 
-Current approaches to this problem are to saturate farmers with more and more
-forecast information and to focus on increasing the accuracy and spatial
-resolution of weather forecasts. While these efforts are of scientific value
-and can help manage extreme weather events at a regional level, they do not
-address farmers' needs for simpler and easy to action information. Our customer
-discovery process has identified that farmers are saturated with data and
-information leading to “decision paralysis” and that the time they would be
-required to spend interpreting this information into something they can make a
-decision on is prohibitive.
-
-The innovative aspect of our project is that it does the data analytics and
-interpretation for the farmer and then only alerts them if a crop stress event
-is likely to occur. Our project is giving growers directly actionable
-information in a timely manner, instead of them having to invest considerable
-time in analysing data and information to assess the likelihood of a stress
-event. We are giving them the time to take actions to save their crops and
-livelihoods. To do this we are linking a range of weather forecasts and weather
-models with crop modelling methodologies. To do this, we are using a
-cloud-computing environment and the open source, community driven “R”
-statistical programming language. Our analysis identifies not only if a crop is
-going to be exposed to an extreme weather event but the likely intensity of that
-exposure. This level of detail not possible to garner from typical weather
-forecasts, however this level of detail is important as the response required
-from farmers to a mild stress event is likely to be very different to the
-response required to a severe stress event. While it might be possible to build
-a smart phone app to present the alert to farmer, we have chosen a relatively
-simpler approach as it will function across devices and will also function with
-non-smart phone devices.
+The current approach to giving farmers the tools they need to prevent crop failures is to saturate farmers with ever increasing amounts of forecast information and to focus on increasing the accuracy and spatial resolution of weather forecasts. While these efforts are of value scientifically and can help governments and institutions manage extreme weather events at a regional level, they do little to address farmer's needs for simple, timely and easy to action information. Our customer discovery process to date has identified that farmers are saturated with data and information. This saturation actually hinders decision making as the oversupply of data leads to "decision paralysis". The time required to work through and interpret this data into information they can make a decision on is often prohibitive. Consequently information that could be derived from current weather forecast is often ignored or at the very least not acted on. The innovative aspect of our project is that we are developing systems that source weather forecast data and undertakes the data analytics and interpretation on behalf of the farmer. It then alerts them if a crop stress event is likely to occur. In essence, our project is giving growers directly actionable information in a timely manner in place of them having to invest considerable time in analysing data and information to assess the likelihood of a stress event. It is removing the barriers to farmers using weather forecasts to prevent crop failures and empowers them to confidently take actions to save their crops. To do this we are linking a range of weather forecasts and weather models with crop modelling methodologies. We are doing this in a cloud computing environment with the open source, community driven R programming language and environment for statistical computing and graphics. Our analysis identifies not only if a crop is going to be exposed to an extreme weather event but the likely intensity of that exposure. This level of detail not possible to garner from typical weather forecasts. However, this level of detail is critical as the response required from farmers to a mild stress event is very different to the response required to a severe stress event. While it would be possible to build a smart phone app to present the alert to farmer, we have chosen a relatively simpler approach of using email and text messaging alerts as it easily translate across devices and will also function with non-smart phone devices.  Also the infrastructure underpinning these services are much more robust and less prone to outages than services requiring higher data usage. This ensure that our solution can reliably reach the greatest number of people. 
 
 ## Impact
 *Describe the likely local to global-scale impact of your project being a
 success. Provide details on the likely time-frame for social impact to
 occur. Only judges and organisers will see this section. (500 words max)*
 
-In agriculture, the considerable financial investment is made in growing crops
-along with considerable lead times realising a return on this investment means
-farmers are exposed to the risk of crop failures. At a local scale our project's
-impact will lead to greater resilience within farming families and communities.
-Crop damage/loss due to extreme weather can put a considerable strain on a
-farmer’s and their community’s resources. Empowering and facilitating farmers to
-take actions to minimise/prevent crop failures and damage due to extreme weather
-reduce this financial pressure. This will translate in to more resilient and
-vibrant communities at a regional level as greater amount of agricultural
-revenues flow into them. At a global level a reduction in crop failures will
-increase food supply and food security and is one of the key ways that food
-production can be increased to feed a growing population.  The time scale for
-this impact should be relatively quick. The enabling infrastructure for this
-system exist (mobile phone networks).
+In agriculture, the considerable financial investment made in growing crops along with considerable lead times for realising a return on this investment means farmers are particularly exposed to the risk of crop failures. At a local scale our project's impact will be greater resilience within farming families and their communities. Crop damage or loss due to extreme weather can put a considerable strain on farmer's and a community's resources. Empowering and facilitating farmers to take actions to minimise/prevent crop failures and damage due to extreme weather reduce this financial pressure. This in turn will translate into more resilient and vibrant communities at a regional level as greater amounts of agricultural revenues flow into and become available within them. At a global level a reduction in crop failures will increase food supply and food security. This is one of the key ways that food production can be increased to feed a growing global population. The time scale for this impact should be relatively quick. The enabling infrastructure for this system exist (mobile phone networks) and over 75% of the world's population have access to a mobile phone.
+
 
 ## Feasibility
 *Describe how the idea/solution has a good chance of success. What type of prior
@@ -96,24 +36,4 @@ knowledge, prototypes or prior insights can you provide to help assess the
 likelihood of success? Only Judges and organisers will see this section.
 (500 words max)*
 
-We have an early stage prototype of our solution that proves that the various
-components of the system can be linked and function together. Associate
-Professor Adam Sparks, the leader of the summer crops pathology team in the
-Centre for Crop Health at the University of Southern Queensland (USQ),
-specialises in crop disease and weather modelling. Previously, while working at
-the International Rice Research Institute (IRRI) in Los Baños, Philippines,
-A/Prof Sparks was involved in several projects in developing countries which
-made use of mobile technology to collect and disseminate data and cloud
-computing systems like Amazon Web Services (AWS), e.g. the Philppine Rice
-Information System (PRiSM, http://www.philippinericeinfo.ph/). While Dr Keith
-Pembleton is the leader of USQ’s Agricultural Systems Modelling Research Group
-and specialises in crop modelling and the design and use of decision support
-tools in agriculture. These expertise along with the early stage prototype
-virtually ensure that the technology itself can be implemented. The project has
-a high chance of having a sizable impact at a local and global level.
-Seventy-five percent of the world’s population have access to a mobile phone.
-Our text messaging/email alert system is a low data use system, which removes
-data cost and speed as a barrier to farmers accessing our solution. Text message
-systems have been proven to work in natural disaster warning systems in both
-developed and developing countries, proving this approach to disseminating
-information and getting it acted upon is viable.
+We have an early stage prototype of our solution that proves that the various components of the system can been linked and function together. This prototype was recently judged the winner of the "Paddock to Plate" category in the 2016 "GovHack" awards. Associate Professor Adam Sparks, the leader of the summer crops pathology team in the Centre for Crop Health at the University of Southern Queensland USQ specialises in crop diseases and weather modelling. Previously, while working at the International Rice Research Institute (IRRI) in Los Baños, Philippines, A/Prof Sparks was involved in several projects in developing countries which made use of mobile technology to collect and disseminate data and cloud computing systems like Amazon Web Services (AWS), e.g., the Philippine Rice Information System (PRiSM, http://www.philippinericeinfo.ph/). Dr Keith Pembleton is the leader of the Agricultural Systems Modelling Research Group in the Institute for Agriculture and the Environment at USQ. He specialises in crop modelling and the design and use of decision support tools in agriculture. He has helped design several decision support platforms (e.g., YieldWise http://yieldwise.agmodelling.com/, ARMonline http://iage.usq.edu.au/) that ingest complex data feeds through biophysical crop models and presents the results in simple to understand formats focused at farmers. These expertise along with the early stage prototype virtually ensures that the technology itself can be implemented. The project has a strong chance of having a sizable impact at a local and global level. Seventy-five percent of the world's population have access to a mobile phone. Our text messaging/email alert system is a low data use system, which removes data cost and data speed as a barrier to farmers accessing our solution. Text message systems have been proven to work in natural disaster warning systems in both the developed and developing world. This indicates that this approach to disseminating information and getting it acted on is a viable solution to the problem.
