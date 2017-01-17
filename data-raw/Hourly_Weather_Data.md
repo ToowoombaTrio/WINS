@@ -12,7 +12,7 @@ devtools::use_data(QLD_hourly_locations, overwrite = TRUE,
                    compress = "bzip2")
 ```
 
-    ## Saving QLD_hourly_locations as QLD_hourly_locations.rda to /Users/asparks/Development/JohnConner/data
+    ## Saving QLD_hourly_locations as QLD_hourly_locations.rda to /Users/asparks/Development/WINS/data
 
 ``` r
 cl <- parallel::makeCluster(parallel::detectCores() - 2)
@@ -39,4 +39,4 @@ QLD_hourly_data <- plyr::rbind.fill(QLD_hourly_data)
 devtools::use_data(QLD_hourly_data, overwrite = TRUE, compress = "bzip2")
 ```
 
-    ## Saving QLD_hourly_data as QLD_hourly_data.rda to /Users/asparks/Development/JohnConner/data
+    ## Saving QLD_hourly_data as QLD_hourly_data.rda to /Users/asparks/Development/WINS/data
