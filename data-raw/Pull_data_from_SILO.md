@@ -80,7 +80,7 @@ QLD_SILO_and_hourly_stations <- spatial
 devtools::use_data(QLD_SILO_and_hourly_stations, overwrite = TRUE, compress = "bzip2")
 ```
 
-    ## Saving QLD_SILO_and_hourly_stations as QLD_SILO_and_hourly_stations.rda to /Users/asparks/Development/JohnConner/data
+    ## Saving QLD_SILO_and_hourly_stations as QLD_SILO_and_hourly_stations.rda to /Users/asparks/Development/WINS/data
 
 ``` r
 # establish the dates to be working within
@@ -104,7 +104,7 @@ for (i in spatial$station_number) {
 devtools::use_data(SILO_array, overwrite = TRUE, compress = "bzip2")
 ```
 
-    ## Saving SILO_array as SILO_array.rda to /Users/asparks/Development/JohnConner/data
+    ## Saving SILO_array as SILO_array.rda to /Users/asparks/Development/WINS/data
 
 ``` r
 #libarys required for mapping

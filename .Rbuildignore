@@ -7,3 +7,5 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^\Mitsubishi
+^codecov\.yml$
+^docs$

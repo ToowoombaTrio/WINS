@@ -2,14 +2,12 @@ Package: WINS
 Type: Package
 Title: Crop Stress Weather Information Delivery System
 Version: 0.0.1
-Date: 2016-07-31
 Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
     email = "adamhsparks@gmail.com"),
     person("Keith", "Pembleton", role = "ctb",
     email = "keith.pembleton@usq.edu.au"),
     person("Gordon", "Grundy", role = "ctb",
     email = "gordongrundy@gmail.com"))
-Maintainer: Adam Sparks <adamhsparks@gmail.com>
 URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
 Description: Use QLD SILO data to generate hourly data. Validated using BoM data.
@@ -42,5 +40,7 @@ LazyData: TRUE
 ByteCompile: TRUE
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat,
+    covr
 VignetteBuilder: knitr
