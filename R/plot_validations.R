@@ -20,8 +20,8 @@ plot_density <- function(BoM_SILO_data) {
                                 option = "D", direction = 1,
                                 name = "Agreement") +
     ggplot2::geom_abline(slope = 1, colour = "white") +
-    ggplot2::xlab("SILO Downscaled (Predicted Values (˚C))") +
-    ggplot2::ylab("BoM Hourly (Actual Values (˚C))") +
+    ggplot2::xlab("SILO Downscaled (Predicted Values (degrees C))") +
+    ggplot2::ylab("BoM Hourly (Actual Values (degrees C))") +
     ggplot2::ggtitle("Density of Predicted Versus Actual Values") +
     ggplot2::theme(text = ggplot2::element_text(size = 10))
 }
