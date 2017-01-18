@@ -2,7 +2,7 @@
 % Please edit documentation in R/caclulate_error.R
 \name{mae}
 \alias{mae}
-\title{Calcuate Root Mean Absolute Error}
+\title{Calculate Root Mean Absolute Error}
 \usage{
 mae(actual, predicted)
 }
