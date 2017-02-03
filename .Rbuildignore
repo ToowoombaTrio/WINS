@@ -9,3 +9,4 @@
 ^\Mitsubishi
 ^codecov\.yml$
 ^docs$
+^CONDUCT\.md$

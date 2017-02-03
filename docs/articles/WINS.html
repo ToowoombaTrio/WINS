@@ -34,6 +34,9 @@
 <li>
   <a href="../articles/index.html">Articles</a>
 </li>
+<li>
+  <a href="../news/index.html">News</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -57,7 +60,7 @@
       <h1>Using the WINS Package to Downscale SILO Data</h1>
                         <h4 class="author">The ToowoombaTrio</h4>
             
-            <h4 class="date">2017-01-18</h4>
+            <h4 class="date">2017-02-03</h4>
           </div>
 
     
@@ -82,12 +85,26 @@
 <div id="generate-map-of-heat-stress" class="section level2">
 <h2 class="hasAnchor">
 <html><body><a href="#generate-map-of-heat-stress" class="anchor"> </a></body></html>Generate Map of Heat Stress</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)
-<span class="kw">library</span>(fields)
-<span class="kw">library</span>(reshape)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)</code></pre></div>
+<pre><code>## Loading required package: sp</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fields)</code></pre></div>
+<pre><code>## Loading required package: spam</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre><code>## Spam version 1.4-0 (2016-08-29) is loaded.
+## Type 'help( Spam)' or 'demo( spam)' for a short introduction 
+## and overview of this package.
+## Help for individual functions is also obtained by adding the
+## suffix '.spam' to the function name, e.g. 'help( chol.spam)'.</code></pre>
+<pre><code>## 
+## Attaching package: 'spam'</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     backsolve, forwardsolve</code></pre>
+<pre><code>## Loading required package: maps</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape)
 <span class="kw">library</span>(readr)
 
-hourlyT &lt;-<span class="st"> </span>BoM_SILO_data[, <span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">2</span>, <span class="dv">4</span>:<span class="dv">5</span>)]
+hourlyT &lt;-<span class="st"> </span>BoM_SILO_data[, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)]
 <span class="kw">head</span>(hourlyT)</code></pre></div>
 <pre><code>##   station_number JDay    Hour SILO_TMP
 ## 1          27045    1 Hour_01 26.43543
@@ -96,11 +113,11 @@ hourlyT &lt;-<span class="st"> </span>BoM_SILO_data[, <span class="kw">c</span>(
 ## 4          27045    1 Hour_04 25.60548
 ## 5          27045    1 Hour_05 25.39288
 ## 6          27045    1 Hour_06 25.20143</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hourlyT$hour &lt;-<span class="st"> </span><span class="kw">substr</span>(hourlyT[, <span class="dv">3</span>], <span class="dv">6</span>, <span class="dv">7</span>)
-hourlyT &lt;-<span class="st"> </span><span class="kw">subset</span>(hourlyT, hourlyT$JDay ==<span class="st"> </span><span class="dv">1</span>)[, -<span class="dv">3</span>]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hourlyT<span class="op">$</span>hour &lt;-<span class="st"> </span><span class="kw">substr</span>(hourlyT[, <span class="dv">3</span>], <span class="dv">6</span>, <span class="dv">7</span>)
+hourlyT &lt;-<span class="st"> </span><span class="kw">subset</span>(hourlyT, hourlyT<span class="op">$</span>JDay <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)[, <span class="op">-</span><span class="dv">3</span>]
 
 hourlyT &lt;-<span class="st"> </span><span class="kw">melt</span>(hourlyT, <span class="dt">id.vars =</span> <span class="kw">c</span>(<span class="st">"station_number"</span>, <span class="st">"hour"</span>, <span class="st">"JDay"</span>), <span class="dt">measure.vars =</span> <span class="st">"SILO_TMP"</span>)
-hourlyT &lt;-<span class="st"> </span><span class="kw">cast</span>(hourlyT, hour~station_number, <span class="dt">fun =</span> <span class="st">"mean"</span>)
+hourlyT &lt;-<span class="st"> </span><span class="kw">cast</span>(hourlyT, hour<span class="op">~</span>station_number, <span class="dt">fun =</span> <span class="st">"mean"</span>)
 
 <span class="kw">head</span>(QLD_SILO_and_hourly_stations)</code></pre></div>
 <pre><code>## # A tibble: 6 × 17
@@ -122,14 +139,14 @@ temp_threshold &lt;-<span class="st"> </span><span class="dv">30</span>
 
 hours_of_high_temps &lt;-<span class="st"> </span><span class="kw">c</span>()
 
-for (x in <span class="kw">names</span>(hourlyT[, <span class="dv">2</span>:<span class="dv">71</span>])) {
-  hours_of_high_temps &lt;-<span class="st"> </span><span class="kw">c</span>(hours_of_high_temps, <span class="kw">length</span>(hourlyT[, x][hourlyT[, x] &gt;<span class="st"> </span>temp_threshold]))
+<span class="cf">for</span> (x <span class="cf">in</span> <span class="kw">names</span>(hourlyT[, <span class="dv">2</span><span class="op">:</span><span class="dv">71</span>])) {
+  hours_of_high_temps &lt;-<span class="st"> </span><span class="kw">c</span>(hours_of_high_temps, <span class="kw">length</span>(hourlyT[, x][hourlyT[, x] <span class="op">&gt;</span><span class="st"> </span>temp_threshold]))
 }
 
-high_temps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">names</span>(hourlyT[, <span class="dv">2</span>:<span class="dv">71</span>]), <span class="kw">as.numeric</span>(hours_of_high_temps))
+high_temps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">names</span>(hourlyT[, <span class="dv">2</span><span class="op">:</span><span class="dv">71</span>]), <span class="kw">as.numeric</span>(hours_of_high_temps))
 <span class="kw">names</span>(high_temps) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"station_number"</span>, <span class="st">"hours_of_high_temps"</span>)
 
-df &lt;-<span class="st"> </span>plyr::<span class="kw">join</span>(high_temps, QLD_SILO_and_hourly_stations, <span class="dt">by =</span> <span class="st">"station_number"</span>, <span class="dt">type =</span> <span class="st">"left"</span>)
+df &lt;-<span class="st"> </span>plyr<span class="op">::</span><span class="kw">join</span>(high_temps, QLD_SILO_and_hourly_stations, <span class="dt">by =</span> <span class="st">"station_number"</span>, <span class="dt">type =</span> <span class="st">"left"</span>)
 <span class="kw">head</span>(df)</code></pre></div>
 <pre><code>##   station_number hours_of_high_temps WMO_NUM           station_name
 ## 1          27045                   9   94170             WEIPA AERO
@@ -161,14 +178,14 @@ df &lt;-<span class="st"> </span>plyr::<span class="kw">join</span>(high_temps, 
 ## 6 flat_inland         QLD_PW002       &lt;NA&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create the surface to plot</span>
 
-spline &lt;-<span class="st"> </span><span class="kw">Tps</span>(<span class="kw">data.frame</span>(df$LONGITUDE, df$LATITUDE), df$hours_of_high_temps)
+spline &lt;-<span class="st"> </span><span class="kw">Tps</span>(<span class="kw">data.frame</span>(df<span class="op">$</span>LONGITUDE, df<span class="op">$</span>LATITUDE), df<span class="op">$</span>hours_of_high_temps)
 grid &lt;-<span class="st"> </span><span class="kw">predictSurface</span>(spline, <span class="dt">nx =</span> <span class="dv">2000</span>, <span class="dt">ny =</span> <span class="dv">2000</span>)</code></pre></div>
 <pre><code>## [1] 4000000       2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(spline, <span class="kw">cbind</span>(<span class="fl">151.9507</span>, -<span class="fl">27.5598</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">predict</span>(spline, <span class="kw">cbind</span>(<span class="fl">151.9507</span>, <span class="op">-</span><span class="fl">27.5598</span>))</code></pre></div>
 <pre><code>##          [,1]
 ## [1,] 1.819387</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Oz &lt;-<span class="st"> </span><span class="kw">getData</span>(<span class="st">"GADM"</span>, <span class="dt">country =</span> <span class="st">"AUS"</span>, <span class="dt">level =</span> <span class="dv">1</span>)
-QLD &lt;-<span class="st"> </span>Oz[Oz@data$NAME_1 ==<span class="st"> "Queensland"</span>, ]
+QLD &lt;-<span class="st"> </span>Oz[Oz<span class="op">@</span>data<span class="op">$</span>NAME_<span class="dv">1</span> <span class="op">==</span><span class="st"> "Queensland"</span>, ]
 
 <span class="kw">image.plot</span>(grid, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)
 <span class="kw">plot</span>(QLD, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
@@ -185,7 +202,7 @@ attachmentName &lt;-<span class="st"> "QLDmap.png"</span>
 
 <span class="kw">library</span>(mailR)
 
-for (value in subscribers$run) {
+<span class="cf">for</span> (value <span class="cf">in</span> subscribers<span class="op">$</span>run) {
   email &lt;-<span class="st"> </span><span class="kw">as.character</span>(subscribers[value,<span class="dv">1</span>])
   location &lt;-<span class="st"> </span><span class="kw">as.character</span>(subscribers[value,<span class="dv">2</span>])
   lat &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(subscribers[value,<span class="dv">3</span>])

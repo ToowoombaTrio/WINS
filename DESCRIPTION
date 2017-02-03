@@ -36,7 +36,7 @@ Imports:
     settings,
     tidyr,
     viridis
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.0
 Encoding: UTF-8
 NeedsCompilation: no
 Repository: CRAN
