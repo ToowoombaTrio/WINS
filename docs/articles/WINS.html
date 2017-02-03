@@ -85,23 +85,9 @@
 <div id="generate-map-of-heat-stress" class="section level2">
 <h2 class="hasAnchor">
 <html><body><a href="#generate-map-of-heat-stress" class="anchor"> </a></body></html>Generate Map of Heat Stress</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)</code></pre></div>
-<pre><code>## Loading required package: sp</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fields)</code></pre></div>
-<pre><code>## Loading required package: spam</code></pre>
-<pre><code>## Loading required package: grid</code></pre>
-<pre><code>## Spam version 1.4-0 (2016-08-29) is loaded.
-## Type 'help( Spam)' or 'demo( spam)' for a short introduction 
-## and overview of this package.
-## Help for individual functions is also obtained by adding the
-## suffix '.spam' to the function name, e.g. 'help( chol.spam)'.</code></pre>
-<pre><code>## 
-## Attaching package: 'spam'</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     backsolve, forwardsolve</code></pre>
-<pre><code>## Loading required package: maps</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)
+<span class="kw">library</span>(fields)
+<span class="kw">library</span>(reshape)
 <span class="kw">library</span>(readr)
 
 hourlyT &lt;-<span class="st"> </span>BoM_SILO_data[, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)]
@@ -251,7 +237,7 @@ attachmentName &lt;-<span class="st"> "QLDmap.png"</span>
 
 
       <footer><div class="copyright">
-  <p>Developed by Adam Sparks.</p>
+  <p>Developed by Adam Sparks, Keith Pembleton.</p>
 </div>
 
 <div class="pkgdown">

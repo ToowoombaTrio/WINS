@@ -49,3 +49,10 @@ rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
 mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
 #> [1] 2.571315
 ```
+
+Meta
+====
+
+If you find bugs or other issues, please report them to us using <https://github.com/ToowoombaTrio/WINS/issues>.
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
