@@ -48,14 +48,6 @@ Perform temporal downscaling and data checks and comparison
 # Downscale the data
 BoM_SILO_data <- downscale()
 
-# Check against BoM data
-
-plot_density(BoM_SILO_data)
-
-rmse(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
-
-mae(BoM_SILO_data[, 3], BoM_SILO_data[, 5])
-
 ```
 
 # Meta

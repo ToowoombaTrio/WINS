@@ -88,17 +88,14 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># Downscale the data</span>
 BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/downscale.html">downscale</a></span>()
-
-<span class="co"># Check against BoM data</span>
-
-<span class="kw"><a href="reference/plot_density.html">plot_density</a></span>(BoM_SILO_data)</code></pre></div>
-<p><img src="README-unnamed-chunk-4-1.png" width="672"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/rmse.html">rmse</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])
-<span class="co">#&gt; [1] 3.65625</span>
-
-<span class="kw"><a href="reference/mae.html">mae</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])
-<span class="co">#&gt; [1] 2.571315</span></code></pre></div>
+<span class="co">#&gt; Warning in utils::data("QLD_SILO_and_hourly_stations", package = "WINS", :</span>
+<span class="co">#&gt; data set 'QLD_SILO_and_hourly_stations' not found</span>
+<span class="co">#&gt; Warning in utils::data("QLD_hourly_data", package = "WINS", envir =</span>
+<span class="co">#&gt; environment()): data set 'QLD_hourly_data' not found</span>
+<span class="co">#&gt; Warning in utils::data("QLD_hourly_locations", package = "WINS", envir =</span>
+<span class="co">#&gt; environment()): data set 'QLD_hourly_locations' not found</span>
+<span class="co">#&gt; Warning in utils::data("SILO_array", package = "WINS", envir =</span>
+<span class="co">#&gt; environment()): data set 'SILO_array' not found</span></code></pre></div>
 </div>
 <div id="meta" class="section level1">
 <h1 class="hasAnchor">
