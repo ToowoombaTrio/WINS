@@ -38,12 +38,9 @@ devtools::install_github("ToowoombaTrio/WINS")
 library("WINS")
 ```
 
-```{r, echo=FALSE}
-library(WINS)
-```
 Perform temporal downscaling and data checks and comparison
 
-```{r, messages=FALSE}
+```{r, messages=FALSE, eval=FALSE}
 
 # Downscale the data
 BoM_SILO_data <- downscale()

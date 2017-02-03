@@ -33,14 +33,6 @@ Perform temporal downscaling and data checks and comparison
 
 # Downscale the data
 BoM_SILO_data <- downscale()
-#> Warning in utils::data("QLD_SILO_and_hourly_stations", package = "WINS", :
-#> data set 'QLD_SILO_and_hourly_stations' not found
-#> Warning in utils::data("QLD_hourly_data", package = "WINS", envir =
-#> environment()): data set 'QLD_hourly_data' not found
-#> Warning in utils::data("QLD_hourly_locations", package = "WINS", envir =
-#> environment()): data set 'QLD_hourly_locations' not found
-#> Warning in utils::data("SILO_array", package = "WINS", envir =
-#> environment()): data set 'SILO_array' not found
 ```
 
 Meta

@@ -20,27 +20,13 @@ downscale <- function() {
   station_number <- NULL
   Hour <- NULL
   SILO_TMP <- NULL
-  BoM_TMP <- NULL
   Hour_01 <- NULL
   Hour_24 <- NULL
+  QLD_hourly_data <- NULL
 
   opt <- settings::options_manager(warn = 2, timeout = 300,
                                    stringsAsFactors = FALSE)
 
-  utils::data("QLD_SILO_and_hourly_stations", package = "WINS",
-              envir = environment())
-  QLD_SILO_and_hourly_stations <- get("QLD_SILO_and_hourly_stations",
-                                      envir = environment())
-
-  utils::data("QLD_hourly_data", package = "WINS", envir = environment())
-  QLD_hourly_data <- get("QLD_hourly_data", envir = environment())
-
-  utils::data("QLD_hourly_locations", package = "WINS",
-              envir = environment())
-  QLD_hourly_locations <- get("QLD_hourly_locations",
-                              envir = environment())
-
-  utils::data("SILO_array", package = "WINS", envir = environment())
   SILO_array <- get("SILO_array", envir = environment())
   i <- NULL
   j <- NULL
