@@ -38,7 +38,6 @@ Imports:
 RoxygenNote: 6.0.0
 Encoding: UTF-8
 NeedsCompilation: no
-Repository: CRAN
 LazyData: TRUE
 ByteCompile: TRUE
 Suggests:
