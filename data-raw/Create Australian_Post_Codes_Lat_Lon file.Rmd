@@ -73,13 +73,13 @@ Qld_stations
 Now add these stations to the larger data set.
 
 ```{r}
-lat_lon_data <- rbind(lat_lon_data, Qld_stations)
+Australian_Post_Codes_Lat_Lon <- as.data.frame(rbind(lat_lon_data, Qld_stations))
 ```
 
 ## Save Data for Inclusion in Package
 
 ```{r save_data, echo=TRUE}
-devtools::use_data(lat_lon_data, compress = "xz", overwrite = TRUE)
+devtools::use_data(Australian_Post_Codes_Lat_Lon, compress = "xz", overwrite = TRUE)
 ```
 
 ## R System Information
