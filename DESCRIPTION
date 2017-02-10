@@ -34,7 +34,7 @@ Imports:
     reshape,
     settings,
     tidyr,
-    viridis
+    XML
 RoxygenNote: 6.0.0
 Encoding: UTF-8
 NeedsCompilation: no

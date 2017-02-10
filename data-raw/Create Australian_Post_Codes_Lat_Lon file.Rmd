@@ -1,0 +1,90 @@
+---
+title: "Create Australian_Post_Codes_Lat_Lon.Rda File"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Gather Latitude and Longitude Data for mapping BOM Data
+
+The BOM xlm file does not contain any lat or lon information so we need to get
+that from elsewhere.
+
+The file does not contain all sites, a few need to be added manually.
+
+```{r, eval=TRUE}
+download.file("http://www.corra.com.au/downloads/Australian_Post_Codes_Lat_Lon.zip", 
+              destfile = paste0(tempdir(), "post_codes.zip"))
+
+lat_lon_data <- readr::read_csv(paste0(tempdir(), "post_codes.zip"))
+
+lat_lon_data
+```
+
+## Plot the Data to Check Integrity
+
+Install the `visdat` package to check the data integrity of the file.
+
+```{r plot_data}
+#install.packages("devtools", dep = TRUE)
+devtools::install_github("njtierney/visdat", dep = TRUE)
+
+visdat::vis_dat(lat_lon_data)
+```
+
+Next map the points to check the integrity of the information in the data.
+
+```{r map_points}
+plot(lat_lon_data$lat ~ lat_lon_data$lon)
+```
+
+There are some suspect stations in the upper left.
+
+```{r subset_stations}
+subset(lat_lon_data, lat > 0)
+```
+
+Checking these in Google Earth shows one point in Germany and one in Spain. For
+now we'll remove them.
+
+```{r remove_stations}
+lat_lon_data <- lat_lon_data[lat_lon_data$lat < 0, ]
+```
+
+Check the map again to be sure that they were properly removed from the data.
+
+```{r map_points2}
+plot(lat_lon_data$lat ~ lat_lon_data$lon)
+```
+
+## Adding Missing Stations
+There are some stations missing in Queensland that we can add to this data set.
+These station data come from cross checking the BOM XML file with the 
+`lat_lon_data` data set.
+
+
+```{r}
+Qld_stations = readr::read_csv("Qld_stations.csv")
+
+Qld_stations
+```
+Now add these stations to the larger data set.
+
+```{r}
+lat_lon_data <- rbind(lat_lon_data, Qld_stations)
+```
+
+## Save Data for Inclusion in Package
+
+```{r save_data, echo=TRUE}
+devtools::use_data(lat_lon_data, compress = "xz", overwrite = TRUE)
+```
+
+## R System Information
+
+```{r system information, echo=FALSE}
+sessionInfo()
+```
+
