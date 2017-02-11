@@ -55,7 +55,7 @@ for (x in run) {
 
 
 #this way brings in the lat and lons that have had the missing values added
-lat_lon_data <- read.csv("Australian_Post_Codes_Lat_Lon.csv")
+#lat_lon_data <- read.csv("Australian_Post_Codes_Lat_Lon.csv")
 
 #the lat and lon data set covers alot more Australian_Post_Codes_Lat_Lon that just the BOM Australian_Post_Codes_Lat_Lon so we need to sort through it
 #also some BOM Australian_Post_Codes_Lat_Lon are missing from the lat and lon data so we need to identify those so they can be added
