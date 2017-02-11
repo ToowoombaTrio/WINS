@@ -104,6 +104,8 @@ bits$location <- toupper(bits$location)
 
 test <- dplyr::left_join(bits, stations, by = c("location" = "NAME"))
 
+visdat::vis_dat(test)
+
 # we then need to convert the case of the Australian_Post_Codes_Lat_Lon names in the BOM location data to upper case
 Australian_Post_Codes_Lat_Lon$location <-
   toupper(Australian_Post_Codes_Lat_Lon$location)
