@@ -106,35 +106,6 @@ test <- dplyr::left_join(bits, stations, by = c("location" = "NAME"))
 
 visdat::vis_dat(test)
 
-# we then need to convert the case of the Australian_Post_Codes_Lat_Lon names in the BOM location data to upper case
-Australian_Post_Codes_Lat_Lon$location <-
-  toupper(Australian_Post_Codes_Lat_Lon$location)
-
-#this sets up a data frame for the lat and lon data to go into through the for loop below
-location_lat_lon <-
-  read.table(
-    text = "",
-    colClasses = c("character", "numeric", "numeric"),
-    col.names = c("suburb", "lat", "lon")
-  )
-
-#this for loop looks through the lat and lon data for the Australian_Post_Codes_Lat_Lon that the BOM data covers and extracts the relivant lat and lon
-#for Australian_Post_Codes_Lat_Lon that are missing it provides a NA
-for (location in Australian_Post_Codes_Lat_Lon$location) {
-  data <-
-    subset(qld_lat_lon, suburb == location, select = c(suburb, lat, lon))
-  if (nrow(data) > 1) {
-    data <- head(data, 1)
-  }
-  if (nrow(data) < 1) {
-    suburb <- location
-    lat <- NA
-    lon <- NA
-    data <- rbind(data, data.frame(suburb, lat, lon))
-  }
-  location_lat_lon <- rbind(location_lat_lon, data)
-
-}
 
 ###this little bit of script identifies any sites missing lat and lon data and puts them into a table####
 ###still need to build an email alert for missing sites so if BOM adds new foracst sites that we dont have lat and lon for we can add them###
@@ -143,7 +114,7 @@ location_lat_lon_NA_find[is.na(location_lat_lon)] <- 500
 sites_with_missing_lat_and_lon <-
   subset(location_lat_lon_NA_find, lon == 500, select = c(suburb, lat, lon))
 
-#this combines the sortted lat and lon data to out location data frame
+#this combines the sorted lat and lon data to out location data frame
 Australian_Post_Codes_Lat_Lon <-
   cbind(Australian_Post_Codes_Lat_Lon,
         location_lat_lon$lat,
@@ -159,10 +130,10 @@ Australian_Post_Codes_Lat_Lon <-
 
 
 #####Now we are ready to bring in the forcast data#####
-#firstly we need to break up the text into segmants that we can work with, this should give us one text string of data per site
-mylist <- list(xml_df2[2])
-as.character(mylist)
-df <- as.data.frame(mylist)
+#firstly we need to break up the text into segmants that we can work with,
+# this should give us one text string of data per site
+mylist <- (as.character(list(xml_df2[2])))
+
 mychar <- gsub("\"", "sub", mylist)
 bits <- unlist(strsplit(mychar, 'sub'))
 #then we remove the header information that we dont need
