@@ -67,13 +67,16 @@
 <h2 class="hasAnchor">
 <a href="#about" class="anchor"></a>About</h2>
 <p>WINS is an R-package constructed as a part of GovHack 2016.</p>
-<p>The WINS project (formerly called John Conner) was initiated by the Toowoomba Trio to tackle a major and growing problem faced by Queensland vegetable growers. This challenge is identifying and responding to heat stress in their crops. High temperatures can cause considerable stress to crops, reducing yields and the quality of the produce grown. However, if the stress is identified early enough remedial action can be taken to minimise the damage and save the crop. The WINS project provides a timely warning system for farmers when a heat stress event has likely occurred. Please watch our <a href="https://m.youtube.com/watch?v=yECTDHx794E%20https://github.com/ToowoombaTrio/John_Conner">YouTube video</a> describing the WINS Project. The WINS project is built in the R environment, an open source statistical programing environment. It utilises the Qld SILO patch point weather data, available from the QLD government data portal, and models hourly data using a temperature from <a href="https://www.google.com.au/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiuzaPjw53OAhXHHZQKHTWSCO8QFggdMAA&amp;url=https%3A%2F%2Fcran.r-project.org%2Fpackage%3DchillR&amp;usg=AFQjCNEIRLgNXIVRHBXk0sqkM9Z1RiR_qw&amp;sig2=nze6usBjw95mnsgL7u0vdQ">chillR</a>. This downscaling is validated against the Bureau of Meteorology (BoM) hourly temperature data set, an official #GovHack 2016 data set, to show that there is good agreement between the modelled hourly data and the observed BoM data.</p>
+<p>The WINS project (formerly called <a href="https://github.com/ToowoombaTrio/John_Conner">John Conner</a>) was initiated by the Toowoomba Trio to tackle a major and growing problem faced by Queensland vegetable growers. This challenge is identifying and responding to heat stress in their crops. High temperatures can cause considerable stress to crops, reducing yields and the quality of the produce grown. However, if the stress is identified early enough remedial action can be taken to minimise the damage and save the crop. The WINS project provides a timely warning system for farmers when a heat stress event has likely occurred. Please watch our <a href="https://m.youtube.com/watch?v=yECTDHx794E%20https://github.com/ToowoombaTrio/John_Conner">YouTube video</a> describing the WINS Project. The WINS project is built in the R environment, an open source statistical programing environment. It utilises the Qld SILO patch point weather data, available from the Qld government data portal, and models hourly data using a temperature from <a href="https://www.google.com.au/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiuzaPjw53OAhXHHZQKHTWSCO8QFggdMAA&amp;url=https%3A%2F%2Fcran.r-project.org%2Fpackage%3DchillR&amp;usg=AFQjCNEIRLgNXIVRHBXk0sqkM9Z1RiR_qw&amp;sig2=nze6usBjw95mnsgL7u0vdQ">chillR</a>. This downscaling was validated against the Bureau of Meteorology (BoM) hourly temperature data set, an official #GovHack 2016 data set, to show that there is good agreement between the modelled hourly data and the observed BoM data as a part of the <em>John_Conner</em> project.</p>
+<div class="figure">
+<img src="reference/figures/Fit_hexbin.png" alt="Comparison of hourly interpolated values versus hourly BoM data for one year"><p class="caption">Comparison of hourly interpolated values versus hourly BoM data for one year</p>
+</div>
 </div>
 </div>
 <div id="quick-start" class="section level1">
 <h1 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick Start</h1>
-<p>To install this R package and recreate what we’ve done this weekend for Govhack2016. Install the package and check out our vignette that details how to recreate what we’ve done.</p>
+<p>This package is only available from GitHub, not yet on CRAN, so you’ll need <em>devtools</em> to install it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>)) {
   <span class="kw">install.packages</span>(<span class="st">"devtools"</span>, <span class="dt">repos =</span> <span class="st">"http://cran.rstudio.com/"</span>) 
   <span class="kw">library</span>(<span class="st">"devtools"</span>)
@@ -81,21 +84,7 @@
 
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ToowoombaTrio/WINS"</span>)
 <span class="kw">library</span>(<span class="st">"WINS"</span>)</code></pre></div>
-<p>Perform temporal downscaling and data checks and comparison</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># Downscale the data</span>
-BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/downscale.html">downscale</a></span>()
-
-<span class="co"># Check against BoM data</span>
-
-<span class="kw"><a href="reference/plot_density.html">plot_density</a></span>(BoM_SILO_data)</code></pre></div>
-<p><img src="README-unnamed-chunk-4-1.png" width="672"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw"><a href="reference/rmse.html">rmse</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])
-<span class="co">#&gt; [1] 3.65625</span>
-
-<span class="kw"><a href="reference/mae.html">mae</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])
-<span class="co">#&gt; [1] 2.571315</span></code></pre></div>
+<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -113,6 +102,7 @@ BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Adam Sparks <br><small class="roles"> Author, maintainer </small> </li>
+<li>Keith Pembleton <br><small class="roles"> Author </small> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
@@ -126,7 +116,7 @@ BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/
 
 
       <footer><div class="copyright">
-  <p>Developed by Adam Sparks.</p>
+  <p>Developed by Adam Sparks, Keith Pembleton.</p>
 </div>
 
 <div class="pkgdown">
