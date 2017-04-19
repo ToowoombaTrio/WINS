@@ -1,3 +1,4 @@
+
 #' Get BOM Forecast for Queensland
 #'
 #'Fetch the BOM forecast and create a data frame object that can be used for

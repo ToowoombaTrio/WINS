@@ -1,18 +1,19 @@
 Package: WINS
 Type: Package
 Title: Crop Stress Weather Information Delivery System
-Version: 0.0.1
-Date: 2016-07-31
+Version: 0.0.1.9000
 Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
     email = "adamhsparks@gmail.com"),
     person("Keith", "Pembleton", role = "aut",
     email = "keith.pembleton@usq.edu.au"),
     person("Gordon", "Grundy", role = "ctb",
     email = "gordongrundy@gmail.com"))
-Maintainer: Adam Sparks <adamhsparks@gmail.com>
 URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
-Description: Use QLD SILO data to generate hourly data. Validated using BoM data.
+Description: Identifies likely heat or cold stress events in crops and send an
+    alert via e-mail to subscribers. The chillR package is used to generate
+    hourly weather data from Queensland Scientific Information for Land
+    Owners (SILO) data.
 Depends:
     R (>= 3.2.0)
 License: MIT + file LICENSE
@@ -42,10 +43,11 @@ Imports:
 RoxygenNote: 6.0.1
 Encoding: UTF-8
 NeedsCompilation: no
-Repository: CRAN
 LazyData: TRUE
 ByteCompile: TRUE
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat,
+    covr
 VignetteBuilder: knitr
