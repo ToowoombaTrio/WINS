@@ -2,13 +2,12 @@
 % Please edit documentation in R/downscale.R
 \name{downscale}
 \alias{downscale}
-\title{Validate Downscaling Methods}
+\title{Downscale BoM weather and forecasts to hourly data for spatial interpolation}
 \usage{
 downscale()
 }
 \description{
-This function automates parsing of temperature and precipitation for
-Queensland weather stations.
+Downscale BoM weather and forecasts to hourly data for spatial interpolation
 }
 \details{
 An R function which formats Australian Bureau of Meteorology (BoM) hourly

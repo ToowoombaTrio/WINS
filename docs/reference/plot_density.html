@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Downscale BoM weather and forecasts to hourly data for spatial interpolation — downscale • WINS</title>
+<title>Visualise fit of downscaled data — plot_density • WINS</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -76,32 +76,36 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Downscale BoM weather and forecasts to hourly data for spatial interpolation</h1>
+    <h1>Visualise fit of downscaled data</h1>
     </div>
 
     
-    <p>Downscale BoM weather and forecasts to hourly data for spatial interpolation</p>
+    <p>Function that creates a hexbin density graph of observed versus predicted
+hourly values.</p>
     
 
-    <pre class="usage"><span class='fu'>downscale</span>()</pre>
-        
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>An R function which formats Australian Bureau of Meteorology (BoM) hourly
-weather data and Queensland's Scientific Information for Land Owners (SILO)
-daily weather data for validation of temporal downscaling of SILO temperature
-data to hourly values.</p>
+    <pre class="usage"><span class='fu'>plot_density</span>(<span class='no'>BoM_SILO_data</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>BoM_SILO_data</th>
+      <td><p>Data object generated from using <code>downscale</code> to
+generate hourly downscaled weather data from daily SILO data along with BoM
+hourly data for validation</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: downscale()</span></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Not run: plot_density(BoM_SILO_data)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
-      <li><a href="#details">Details</a></li>
-      
+      <li><a href="#arguments">Arguments</a></li>
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
