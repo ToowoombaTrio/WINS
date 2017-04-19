@@ -9,7 +9,11 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<<<<<<< HEAD
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+=======
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+>>>>>>> devel
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -34,9 +38,12 @@
 <li>
   <a href="../articles/index.html">Articles</a>
 </li>
+<<<<<<< HEAD
 <li>
   <a href="../news/index.html">News</a>
 </li>
+=======
+>>>>>>> devel
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -60,7 +67,11 @@
       <h1>Using the WINS Package to Downscale SILO Data</h1>
                         <h4 class="author">The ToowoombaTrio</h4>
             
+<<<<<<< HEAD
             <h4 class="date">2017-02-03</h4>
+=======
+            <h4 class="date">2017-04-20</h4>
+>>>>>>> devel
           </div>
 
     
@@ -68,7 +79,11 @@
 <div class="contents">
 <div id="downscale-silo-hourly-data-and-visualise-quality-of-predictions" class="section level1">
 <h1 class="hasAnchor">
+<<<<<<< HEAD
 <html><body><a href="#downscale-silo-hourly-data-and-visualise-quality-of-predictions" class="anchor"> </a></body></html>Downscale SILO Hourly Data and Visualise Quality of Predictions</h1>
+=======
+<a href="#downscale-silo-hourly-data-and-visualise-quality-of-predictions" class="anchor"></a>Downscale SILO Hourly Data and Visualise Quality of Predictions</h1>
+>>>>>>> devel
 <p>This document illustrates the useage of the WINS R package to downscale Queensland SILO weather data from daily to hourly and send an e-mail alert to subscribers, warning them of heat stress to their crop.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">library</span>(WINS)
   BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/downscale.html">downscale</a></span>()
@@ -76,7 +91,11 @@
 <p><img src="WINS_files/figure-html/unnamed-chunk-1-1.png" width="480"></p>
 <div id="check-error" class="section level2">
 <h2 class="hasAnchor">
+<<<<<<< HEAD
 <html><body><a href="#check-error" class="anchor"> </a></body></html>Check Error</h2>
+=======
+<a href="#check-error" class="anchor"></a>Check Error</h2>
+>>>>>>> devel
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/rmse.html">rmse</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])</code></pre></div>
 <pre><code>## [1] 3.65625</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mae.html">mae</a></span>(BoM_SILO_data[, <span class="dv">3</span>], BoM_SILO_data[, <span class="dv">5</span>])</code></pre></div>
@@ -84,10 +103,31 @@
 </div>
 <div id="generate-map-of-heat-stress" class="section level2">
 <h2 class="hasAnchor">
+<<<<<<< HEAD
 <html><body><a href="#generate-map-of-heat-stress" class="anchor"> </a></body></html>Generate Map of Heat Stress</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)
 <span class="kw">library</span>(fields)
 <span class="kw">library</span>(reshape)
+=======
+<a href="#generate-map-of-heat-stress" class="anchor"></a>Generate Map of Heat Stress</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(raster)</code></pre></div>
+<pre><code>## Loading required package: sp</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fields)</code></pre></div>
+<pre><code>## Loading required package: spam</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre><code>## Spam version 1.4-0 (2016-08-29) is loaded.
+## Type 'help( Spam)' or 'demo( spam)' for a short introduction 
+## and overview of this package.
+## Help for individual functions is also obtained by adding the
+## suffix '.spam' to the function name, e.g. 'help( chol.spam)'.</code></pre>
+<pre><code>## 
+## Attaching package: 'spam'</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     backsolve, forwardsolve</code></pre>
+<pre><code>## Loading required package: maps</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape)
+>>>>>>> devel
 <span class="kw">library</span>(readr)
 
 hourlyT &lt;-<span class="st"> </span>BoM_SILO_data[, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>)]
@@ -180,7 +220,11 @@ QLD &lt;-<span class="st"> </span>Oz[Oz<span class="op">@</span>data<span class=
 </div>
 <div id="automated-e-mails-to-subscribers" class="section level1">
 <h1 class="hasAnchor">
+<<<<<<< HEAD
 <html><body><a href="#automated-e-mails-to-subscribers" class="anchor"> </a></body></html>Automated e-mails to subscribers</h1>
+=======
+<a href="#automated-e-mails-to-subscribers" class="anchor"></a>Automated e-mails to subscribers</h1>
+>>>>>>> devel
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># send email abut specific locations</span>
 our_email &lt;-<span class="st"> "toowoombatrio@gmail.com"</span>
 attachmentName &lt;-<span class="st"> "QLDmap.png"</span>
@@ -213,7 +257,11 @@ attachmentName &lt;-<span class="st"> "QLDmap.png"</span>
             <span class="dt">send =</span> <span class="ot">TRUE</span>)
   
 }</code></pre></div>
+<<<<<<< HEAD
 <pre><code>## Warning: Unknown column 'run'</code></pre>
+=======
+<pre><code>## Warning: Unknown or uninitialised column: 'run'.</code></pre>
+>>>>>>> devel
 </div>
 </div>
   </div>
@@ -237,7 +285,11 @@ attachmentName &lt;-<span class="st"> "QLDmap.png"</span>
 
 
       <footer><div class="copyright">
+<<<<<<< HEAD
   <p>Developed by Adam Sparks, Keith Pembleton.</p>
+=======
+  <p>Developed by Adam Sparks.</p>
+>>>>>>> devel
 </div>
 
 <div class="pkgdown">

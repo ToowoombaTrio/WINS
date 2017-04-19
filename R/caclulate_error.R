@@ -1,3 +1,4 @@
+
 #' Calculate Root Mean Square Error
 #'
 #'Function that calculates Root Mean Square Error (RMSE)
