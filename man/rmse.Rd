@@ -23,4 +23,3 @@ predicted <- c(5, 6, 8, 10, 4, 8, 4, 9, 8, 9)
 rmse(actual, predicted)
 
 }
-

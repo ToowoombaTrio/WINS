@@ -20,21 +20,26 @@ Imports:
     chillR,
     data.table,
     doParallel,
+    dplyr,
     fields,
     foreach,
+    foreign,
     ggplot2,
     lubridate,
     iterators,
     mailR,
     parallel,
     plyr,
+    purrr,
     raster,
     readr,
     reshape,
+    rvest,
     settings,
     tidyr,
-    viridis
-RoxygenNote: 5.0.1
+    viridis,
+    xml2
+RoxygenNote: 6.0.1
 Encoding: UTF-8
 NeedsCompilation: no
 Repository: CRAN
