@@ -1,4 +1,4 @@
-#' Get BOM Forecast
+#' Get BOM Forecast for Queensland
 #'
 #'Fetch the BOM forecast and create a data frame object that can be used for
 #'interpolating.
@@ -15,7 +15,8 @@
 #'
 #' @importFrom dplyr %>%
 get_BOM_forecast <- function() {
-  # get BOM station list
+  # BOM station list - a .dbf file (part of a shapefile of station locations)
+  # AAC codes can be used to add lat/lon to the forecast
   utils::download.file(
     "ftp://ftp.bom.gov.au/anon/home/adfd/spatial/IDM00013.dbf",
     destfile = paste0(tempdir(), "AAC_codes.dbf"),
@@ -25,17 +26,24 @@ get_BOM_forecast <- function() {
   AAC_codes <-
     foreign::read.dbf(paste0(tempdir(), "AAC_codes.dbf"))
 
+  # fetch BOM foreast for Qld
   xmlfile <-
     xml2::read_xml("ftp://ftp.bom.gov.au/anon/gen/fwo/IDQ11295.xml")
 
+  # extract locations from forecast
   forecast_locations <- rvest::xml_nodes(xmlfile, "area") %>%
     purrr::map(xml2::xml_attrs) %>%
     purrr::map_df( ~ as.list(.))
 
+  # join locations with lat/lon values for mapping and interpolation
   forecast_locations <- dplyr::left_join(forecast_locations,
                                          AAC_codes,
                                          by = c("aac" = "AAC",
                                                 "description" = "PT_NAME"))
+
+  # remove any rows with missing values, e.g. Districts or all of Qld.
+  # Not all areas have a forecast, only the lowest level has a forecast
+  # Higher levels do not
   forecast_locations <-
     stats::na.omit(forecast_locations[, c(1:2, 9:11)])
 
@@ -49,6 +57,10 @@ get_BOM_forecast <- function() {
   labs <- trimws(xml2::xml_attr(recs, "type"))
   indices <- c(0, rep(1:7, each = 4))
 
+  # create a dataframe of the forecast
+  # 112 indices may change, need to be more flexible with this code
+  # the 29 won't change unless BOM decides to offer a longer or shorter forecast
+  # day = 0 current, days 1 - 7 = a forecast with 4 elements for 29 total
   forecast <- data.frame(
     rep(indices, 112),
     rep(as.vector(unlist(
@@ -70,6 +82,7 @@ get_BOM_forecast <- function() {
     vals
   )
 
+  # name columns in the forecast dataframe something useful
   names(forecast) <-
     c("day_index",
       "aac",
@@ -79,6 +92,9 @@ get_BOM_forecast <- function() {
       "elev",
       "wvar",
       "value")
+
+  # remove any rows that contain "forecast_icon_code", this is the first line
+  # of any daily forecast and does not contain useable information
   forecast <- forecast[forecast$wvar != "forecast_icon_code", ]
   return(forecast)
 }

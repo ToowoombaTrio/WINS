@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_BOM_forecast.R
 \name{get_BOM_forecast}
 \alias{get_BOM_forecast}
-\title{Get BOM Forecast}
+\title{Get BOM Forecast for Queensland}
 \usage{
 get_BOM_forecast()
 }
