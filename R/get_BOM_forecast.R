@@ -38,49 +38,45 @@ get_BOM_forecast <- function() {
     purrr::map_df( ~ as.list(.))
 
   # join locations with lat/lon values for mapping and interpolation
-  forecast_locations <- dplyr::left_join(forecast_locations,
+  forecast_locations <- na.omit(dplyr::left_join(forecast_locations,
                                          AAC_codes,
                                          by = c("aac" = "AAC",
-                                                "description" = "PT_NAME"))
+                                                "description" = "PT_NAME")))
 
-  # remove any rows with missing values, e.g. Districts or all of Qld.
-  # Not all areas have a forecast, only the lowest level has a forecast
-  # Higher levels do not
-  forecast_locations <-
-    stats::na.omit(forecast_locations[, c(1:2, 9:11)])
+  indices <- c(0, 0, rep(1:6, each = 4))
 
   # get all the <element>s
-  recs <- xml2::xml_find_all(xmlforecast, "//element")
+  elements <- xml2::xml_find_all(xmlforecast, "//element")
 
   # extract and clean all the columns
-  vals <- trimws(xml2::xml_text(recs))
+  values <- trimws(xml2::xml_text(elements))
 
   # extract and clean (if needed) the area names
-  labs <- trimws(xml2::xml_attr(recs, "type"))
-  indices <- c(0, rep(1:7, each = 4))
+  labs <- trimws(xml2::xml_attr(elements, "type"))
+
+  fcast <- tibble::tibble(labs, values)
 
   # create a dataframe of the forecast
   # the 29 won't change unless BOM decides to offer a longer or shorter forecast
   # day = 0 current, days 1 - 7 = a forecast with 4 elements for 29 total
   forecast <- data.frame(
-    rep(indices, nrow(forecast_locations)),
     rep(as.vector(unlist(
       forecast_locations[, 1]
-    )), each = 29),
+    )), each = 26),
     rep(as.vector(unlist(
       forecast_locations[, 2]
-    )), each = 29),
+    )), each = 26),
     rep(as.vector(unlist(
       forecast_locations[, 3]
-    )), each = 29),
+    )), each = 26),
     rep(as.vector(unlist(
       forecast_locations[, 4]
-    )), each = 29),
+    )), each = 26),
     rep(as.vector(unlist(
       forecast_locations[, 5]
-    )), each = 29),
+    )), each = 26),
     labs,
-    vals
+    values
   )
 
   # name columns in the forecast dataframe something useful
