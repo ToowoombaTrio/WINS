@@ -25,7 +25,8 @@ get_BOM_forecast <- function() {
   )
 
   AAC_codes <-
-    foreign::read.dbf(paste0(tempdir(), "AAC_codes.dbf"))
+    foreign::read.dbf(paste0(tempdir(), "AAC_codes.dbf"), as.is = TRUE)
+  AAC_codes <- AAC_codes[, c(2:3, 7:9)]
 
   # fetch BOM foreast for Qld
   xmlforecast <-
