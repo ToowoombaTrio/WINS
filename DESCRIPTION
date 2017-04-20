@@ -34,7 +34,6 @@ Imports:
     raster,
     readr,
     reshape,
-    rvest,
     settings,
     tidyr,
     xml2

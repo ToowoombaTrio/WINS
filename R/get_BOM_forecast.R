@@ -28,11 +28,11 @@ get_BOM_forecast <- function() {
     foreign::read.dbf(paste0(tempdir(), "AAC_codes.dbf"))
 
   # fetch BOM foreast for Qld
-  xmlfile <-
+  xmlforecast <-
     xml2::read_xml("ftp://ftp.bom.gov.au/anon/gen/fwo/IDQ11295.xml")
 
   # extract locations from forecast
-  forecast_locations <- rvest::xml_nodes(xmlfile, "area") %>%
+  forecast_locations <- xml2::xml_find_all(xmlforecast, "//area") %>%
     purrr::map(xml2::xml_attrs) %>%
     purrr::map_df( ~ as.list(.))
 
@@ -49,7 +49,7 @@ get_BOM_forecast <- function() {
     stats::na.omit(forecast_locations[, c(1:2, 9:11)])
 
   # get all the <element>s
-  recs <- xml2::xml_find_all(xmlfile, "//element")
+  recs <- xml2::xml_find_all(xmlforecast, "//element")
 
   # extract and clean all the columns
   vals <- trimws(xml2::xml_text(recs))
