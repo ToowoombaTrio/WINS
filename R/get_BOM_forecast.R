@@ -59,11 +59,10 @@ get_BOM_forecast <- function() {
   indices <- c(0, rep(1:7, each = 4))
 
   # create a dataframe of the forecast
-  # 112 indices may change, need to be more flexible with this code
   # the 29 won't change unless BOM decides to offer a longer or shorter forecast
   # day = 0 current, days 1 - 7 = a forecast with 4 elements for 29 total
   forecast <- data.frame(
-    rep(indices, 112),
+    rep(indices, nrow(forecast_locations)),
     rep(as.vector(unlist(
       forecast_locations[, 1]
     )), each = 29),
@@ -97,5 +96,4 @@ get_BOM_forecast <- function() {
   # remove any rows that contain "forecast_icon_code", this is the first line
   # of any daily forecast and does not contain useable information
   forecast <- forecast[forecast$wvar != "forecast_icon_code", ]
-  return(forecast)
 }
