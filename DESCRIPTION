@@ -12,8 +12,7 @@ URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
 Description: Identifies likely heat or cold stress events in crops and send an
     alert via e-mail to subscribers. The chillR package is used to generate
-    hourly weather data from Queensland Scientific Information for Land
-    Owners (SILO) data.
+    hourly weather data from Australia Bureau of Meteorology (BOM).
 Depends:
     R (>= 3.2.0)
 License: MIT + file LICENSE
@@ -38,7 +37,6 @@ Imports:
     rvest,
     settings,
     tidyr,
-    viridis,
     xml2
 RoxygenNote: 6.0.1
 Encoding: UTF-8
