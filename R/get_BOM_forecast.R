@@ -1,4 +1,5 @@
 
+
 #' Get BOM Forecast for Queensland
 #'
 #'Fetch the BOM forecast and create a data frame object that can be used for
@@ -33,17 +34,23 @@ get_BOM_forecast <- function() {
     xml2::read_xml("ftp://ftp.bom.gov.au/anon/gen/fwo/IDQ11295.xml")
 
   # extract locations from forecast
-  forecast_locations <- xml2::xml_find_all(xmlforecast, "//area") %>%
-    purrr::map(xml2::xml_attrs) %>%
-    purrr::map_df( ~ as.list(.))
+  areas <- xml2::xml_find_all(xmlforecast, "//forecast/area")
+  forecast_locations <-
+    dplyr::bind_rows(lapply(xml2::xml_attrs(areas), as.list))
 
   # join locations with lat/lon values for mapping and interpolation
-  forecast_locations <- na.omit(dplyr::left_join(forecast_locations,
+  forecast_locations <- dplyr::left_join(forecast_locations,
                                          AAC_codes,
                                          by = c("aac" = "AAC",
-                                                "description" = "PT_NAME")))
+                                                "description" = "PT_NAME"))
 
-  indices <- c(0, 0, rep(1:6, each = 4))
+
+  forecasts <-
+    lapply(xml2::xml_find_all(xmlforecast, "//forecast/area"), as_list)
+
+  forecasts <- plyr::llply(forecasts, unlist)
+
+  names(forecasts) <- forecast_locations$aac
 
   # get all the <element>s
   elements <- xml2::xml_find_all(xmlforecast, "//element")
@@ -54,30 +61,18 @@ get_BOM_forecast <- function() {
   # extract and clean (if needed) the area names
   labs <- trimws(xml2::xml_attr(elements, "type"))
 
-  fcast <- tibble::tibble(labs, values)
+  y <- NULL
+  for (i in unique(names(forecasts))) {
+    x <- data.frame(
+      keyName = names(forecasts[[i]]),
+      value = forecasts[[i]],
+      row.names = NULL
+    )
+    z <- names(forecasts[i])
+    x <- data.frame(rep(z, nrow(x)), x)
+    y <- dplyr::bind_rows(y, x)
+  }
 
-  # create a dataframe of the forecast
-  # the 29 won't change unless BOM decides to offer a longer or shorter forecast
-  # day = 0 current, days 1 - 7 = a forecast with 4 elements for 29 total
-  forecast <- data.frame(
-    rep(as.vector(unlist(
-      forecast_locations[, 1]
-    )), each = 26),
-    rep(as.vector(unlist(
-      forecast_locations[, 2]
-    )), each = 26),
-    rep(as.vector(unlist(
-      forecast_locations[, 3]
-    )), each = 26),
-    rep(as.vector(unlist(
-      forecast_locations[, 4]
-    )), each = 26),
-    rep(as.vector(unlist(
-      forecast_locations[, 5]
-    )), each = 26),
-    labs,
-    values
-  )
 
   # name columns in the forecast dataframe something useful
   names(forecast) <-
@@ -90,7 +85,4 @@ get_BOM_forecast <- function() {
       "wvar",
       "value")
 
-  # remove any rows that contain "forecast_icon_code", this is the first line
-  # of any daily forecast and does not contain useable information
-  forecast <- forecast[forecast$wvar != "forecast_icon_code", ]
 }
