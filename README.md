@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/ToowoombaTrio/WINS.svg?branch=master)](https://travis-ci.org/ToowoombaTrio/WINS) [![Build status](https://ci.appveyor.com/api/projects/status/sk5u0cff46v4c3ou/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/WINS/branch/master)
+[![Travis-CI Build Status](https://travis-ci.org/ToowoombaTrio/WINS.svg?branch=master)](https://travis-ci.org/ToowoombaTrio/WINS) [![Build status](https://ci.appveyor.com/api/projects/status/sk5u0cff46v4c3ou/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/WINS/branch/master) [![Coverage Status](https://img.shields.io/codecov/c/github/NA/NA/master.svg)](https://codecov.io/github/NA/NA?branch=master)
 
 WINS - crop stress *W*eather *IN*formation delivery *S*ystem
 ============================================================
