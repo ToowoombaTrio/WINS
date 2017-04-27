@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -30,9 +30,6 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="articles/index.html">Articles</a>
 </li>
 <li>
   <a href="news/index.html">News</a>
@@ -65,18 +62,22 @@
 
 <div id="wins---crop-stress-weather-information-delivery-system" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#wins---crop-stress-weather-information-delivery-system" class="anchor"> </a>WINS - crop stress <em>W</em>eather <em>IN</em>formation delivery <em>S</em>ystem</h1></div>
+<a href="#wins---crop-stress-weather-information-delivery-system" class="anchor"></a>WINS - crop stress <em>W</em>eather <em>IN</em>formation delivery <em>S</em>ystem</h1></div>
 <div id="about" class="section level2">
 <h2 class="hasAnchor">
-<a href="#about" class="anchor"> </a>About</h2>
+<a href="#about" class="anchor"></a>About</h2>
 <p>WINS is an R-package constructed as a part of GovHack 2016.</p>
-<p>The WINS project (formerly called John Conner) was initiated by the Toowoomba Trio to tackle a major and growing problem faced by QLD vegetable growers. This challenge is identifying and responding to heat stress in their crops. High temperatures can cause considerable stress to crops, reducing yields and the quality of the produce grown. However, if the stress is identified early enough remedial action can be taken to minimise the damage and save the crop. The WINS project provides a timely warning system for farmers when a heat stress event has likely occurred. Please watch our <a href="https://m.youtube.com/watch?v=yECTDHx794E%20https://github.com/ToowoombaTrio/WINS">YouTube video</a> describing the WINS Project. The WINS project is built in the R environment, an open source statistical programing environment. It utilises the QLD SILO patch point weather data, available from the QLD government data portal, and models hourly data using a temperature from <a href="https://www.google.com.au/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiuzaPjw53OAhXHHZQKHTWSCO8QFggdMAA&amp;url=https%3A%2F%2Fcran.r-project.org%2Fpackage%3DchillR&amp;usg=AFQjCNEIRLgNXIVRHBXk0sqkM9Z1RiR_qw&amp;sig2=nze6usBjw95mnsgL7u0vdQ">chillR</a>. This downscaling is validated against the Bureau of Meteorology (BoM) hourly temperature data set, an official #GovHack 2016 data set, to show that there is good agreement between the modelled hourly data and the observed BoM data.</p>
+<p>The <em>WINS</em> project (formerly called <a href="https://github.com/ToowoombaTrio/John_Conner"><em>John_Conner</em></a>) was initiated by the Toowoomba Trio to tackle a major and growing problem faced by Queensland vegetable growers. This challenge is identifying and responding to heat stress in their crops. High temperatures can cause considerable stress to crops, reducing yields and the quality of the produce grown. However, if the stress is identified early enough remedial action can be taken to minimise the damage and save the crop. <em>WINS</em> provides a timely warning system for farmers when a heat stress event has likely occurred. The <em>WINS</em> project is built in the R environment, an open source statistical programing environment and utilises Australia Bureau of Meteorology (BOM) weather data.</p>
+<p>Please watch our <a href="https://m.youtube.com/watch?v=yECTDHx794E%20https://github.com/ToowoombaTrio/John_Conner">YouTube video</a> describing the <em>John_Conner</em> project for more on how <em>WINS</em> was created and works.</p>
+<div class="figure">
+<img src="reference/figures/Fit_hexbin.png" alt="Comparison of hourly interpolated values versus hourly BoM data for one year"><p class="caption">Comparison of hourly interpolated values versus hourly BoM data for one year</p>
+</div>
 </div>
 </div>
 <div id="quick-start" class="section level1">
 <h1 class="hasAnchor">
-<a href="#quick-start" class="anchor"> </a>Quick Start</h1>
-<p>To install this R package and recreate what we’ve done this weekend for Govhack2016. Install the package and check out our vignette that details how to recreate what we’ve done.</p>
+<a href="#quick-start" class="anchor"></a>Quick Start</h1>
+<p>This package is only available from GitHub, not yet on CRAN, so you’ll need <em>devtools</em> to install it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>)) {
   <span class="kw">install.packages</span>(<span class="st">"devtools"</span>, <span class="dt">repos =</span> <span class="st">"http://cran.rstudio.com/"</span>) 
   <span class="kw">library</span>(<span class="st">"devtools"</span>)
@@ -84,14 +85,10 @@
 
 devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"ToowoombaTrio/WINS"</span>)
 <span class="kw">library</span>(<span class="st">"WINS"</span>)</code></pre></div>
-<p>Perform temporal downscaling and data checks and comparison</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># Downscale the data</span>
-BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/downscale.html">downscale</a></span>()</code></pre></div>
 </div>
 <div id="meta" class="section level1">
 <h1 class="hasAnchor">
-<a href="#meta" class="anchor"> </a>Meta</h1>
+<a href="#meta" class="anchor"></a>Meta</h1>
 <p>If you find bugs or other issues, please report them to us using <a href="https://github.com/ToowoombaTrio/WINS/issues" class="uri">https://github.com/ToowoombaTrio/WINS/issues</a>.</p>
 <p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
@@ -114,14 +111,11 @@ BoM_SILO_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/
 <li>Keith Pembleton <br><small class="roles"> Author </small> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
-<html><body>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/ToowoombaTrio/WINS"><img src="https://travis-ci.org/ToowoombaTrio/WINS.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/adamhsparks/wins/branch/master"><img src="https://ci.appveyor.com/api/projects/status/sk5u0cff46v4c3ou/branch/master?svg=true" alt="Build status"></a></li>
-<li><a href="https://codecov.io/github/ToowoombaTrio/WINS?branch=master"><img src="https://img.shields.io/codecov/c/github/ToowoombaTrio/WINS/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://ci.appveyor.com/project/adamhsparks/WINS/branch/master"><img src="https://ci.appveyor.com/api/projects/status/sk5u0cff46v4c3ou/branch/master?svg=true" alt="Build status"></a></li>
 </ul>
-</body></html>
 </div>
 
 </div>
