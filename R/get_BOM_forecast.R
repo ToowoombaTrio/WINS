@@ -6,7 +6,7 @@
 #'
 #' @return
 #' Data frame of a Australia BOM forecast for Queensland for max temperature,
-#' min temperature and precipitation.
+#' min temperature and corresponding locations.
 #'
 #' @examples
 #' \dontrun{
@@ -56,9 +56,9 @@ get_BOM_forecast <- function() {
   # extract and clean (if needed) (the labels for the forecast)
   labs <- trimws(xml2::xml_attrs(eltext, "type"))
 
-  # use a loop to turn list of named character elements into a dataframe with
-  # the location aac code
-  y <- NULL
+  # use a loop to turn list of named character elements into a list of dataframes
+  # with the location aac code for each line of the data frame
+  y <- vector("list")
   for (i in unique(names(forecasts))) {
     x <- data.frame(
       keyName = names(forecasts[[i]]),
@@ -66,17 +66,21 @@ get_BOM_forecast <- function() {
       row.names = NULL
     )
     z <- names(forecasts[i])
-    x <- data.frame(rep(z, nrow(x)), x)
-    y <- dplyr::bind_rows(y, x)
+    x <- data.frame(rep(as.character(z), nrow(x)), x)
+    y[[i]] <- x
   }
+
+  # combind list into a single dataframe
+  y <- data.table::rbindlist(y, fill = TRUE)
 
   # add the forecast description to the dataframe
   forecast <- data.frame(y, labs, rep(NA, length(labs)))
   names(forecast) <- c("aac", "keyName", "value", "labs", "element")
 
-  # put label for min/max temperature in a new column for us to use to sort in next step
+  # label for min/max temperature in a new col to use for sorting in next step
   forecast$element <-
-    as.character(stringr::str_match(forecast$labs, "air_temperature_[[:graph:]]{7}"))
+    as.character(stringr::str_match(forecast$labs,
+                                    "air_temperature_[[:graph:]]{7}"))
 
   # convert object to tibble and remove rows we don't need, e.g., precip
   # keep only max and min temp
