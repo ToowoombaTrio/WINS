@@ -11,8 +11,9 @@ Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
 URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
 Description: Identifies likely heat or cold stress events in crops and send an
-    alert via e-mail to subscribers. The chillR package is used to generate
-    hourly weather data from Australia Bureau of Meteorology (BOM).
+    alert via e-mail to subscribers. Hourly weather data, both observed and
+    forecasted by Australia Bureau of Meteorology (BOM) are generated and
+    interpolated for Queensland only.
 Depends:
     R (>= 3.2.0)
 License: MIT + file LICENSE
