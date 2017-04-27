@@ -8,7 +8,7 @@ get_BOM_forecast()
 }
 \value{
 Data frame of a Australia BOM forecast for Queensland for max temperature,
-min temperature and precipitation.
+min temperature and corresponding locations.
 }
 \description{
 Fetch the BOM forecast and create a data frame object that can be used for
