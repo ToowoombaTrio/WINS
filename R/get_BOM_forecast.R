@@ -1,5 +1,4 @@
 
-
 #' Get BOM Forecast for Queensland
 #'
 #'Fetch the BOM forecast and create a data frame object that can be used for
@@ -44,23 +43,21 @@ get_BOM_forecast <- function() {
                                          by = c("aac" = "AAC",
                                                 "description" = "PT_NAME"))
 
-
+  # unlist and add the locations aac code
   forecasts <-
-    lapply(xml2::xml_find_all(xmlforecast, "//forecast/area"), as_list)
-
+    lapply(xml2::xml_find_all(xmlforecast, "//forecast/area"),
+           xml2::as_list)
   forecasts <- plyr::llply(forecasts, unlist)
-
   names(forecasts) <- forecast_locations$aac
 
-  # get all the <element>s
-  elements <- xml2::xml_find_all(xmlforecast, "//element")
+  # get all the <element> and <text> tags (the forecast)
+  eltext <- xml2::xml_find_all(xmlforecast, "//element | //text")
 
-  # extract and clean all the columns
-  values <- trimws(xml2::xml_text(elements))
+  # extract and clean (if needed) (the labels for the forecast)
+  labs <- trimws(xml2::xml_attrs(eltext, "type"))
 
-  # extract and clean (if needed) the area names
-  labs <- trimws(xml2::xml_attr(elements, "type"))
-
+  # use a loop to turn list of named character elements into a dataframe with
+  # the location aac code
   y <- NULL
   for (i in unique(names(forecasts))) {
     x <- data.frame(
@@ -73,16 +70,28 @@ get_BOM_forecast <- function() {
     y <- dplyr::bind_rows(y, x)
   }
 
+  # add the forecast description to the dataframe
+  forecast <- data.frame(y, labs, rep(NA, length(labs)))
+  names(forecast) <- c("aac", "keyName", "value", "labs", "element")
 
-  # name columns in the forecast dataframe something useful
-  names(forecast) <-
-    c("day_index",
-      "aac",
-      "location",
-      "lon",
-      "lat",
-      "elev",
-      "wvar",
-      "value")
+  # put label for min/max temperature in a new column for us to use to sort in next step
+  forecast$element <-
+    as.character(stringr::str_match(forecast$labs, "air_temperature_[[:graph:]]{7}"))
 
+  # convert object to tibble and remove rows we don't need, e.g., precip
+  # keep only max and min temp
+  forecast <-
+    tibble::as_tibble(stats::na.omit(forecast[, c(1, 3, 5)]))
+
+  # add dates to the data frame
+  forecast$date <- c(Sys.Date(),
+                     rep(seq(
+                       lubridate::ymd(Sys.Date() + 1),
+                       lubridate::ymd(Sys.Date() + 6),
+                       by = "1 day"
+                     ),
+                     each = 2))
+
+  forecast <-
+    dplyr::left_join(forecast, forecast_locations, by = "aac")
 }
