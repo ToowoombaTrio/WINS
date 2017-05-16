@@ -12,7 +12,7 @@ URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
 Description: Identifies likely heat or cold stress events in crops and send an
     alert via e-mail to subscribers. Hourly weather data, both observed and
-    forecasted by Australia Bureau of Meteorology (BOM) are generated and
+    forecasted by Australian Bureau of Meteorology (BOM) are generated and
     interpolated for Queensland only.
 Depends:
     R (>= 3.2.0)
