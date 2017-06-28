@@ -30,7 +30,7 @@ https://github.com/ToowoombaTrio/John_Conner) describing the *John_Conner* proje
 
 # Quick Start
 
-This package is only available from GitHub, not yet on CRAN, so you'll need _devtools_ to install it.
+This package is only available from GitHub, it is easy to use _devtools_ to install it.
 
 ```{r, eval=FALSE}
 if (!require("devtools")) {

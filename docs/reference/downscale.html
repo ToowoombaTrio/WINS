@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Downscale BoM weather and forecasts to hourly data for spatial interpolation — downscale • WINS</title>
+<title>Downscale daily weather data to hourly — downscale • WINS</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +52,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -76,25 +83,27 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Downscale BoM weather and forecasts to hourly data for spatial interpolation</h1>
+    <h1>Downscale daily weather data to hourly</h1>
     </div>
 
     
-    <p>Downscale BoM weather and forecasts to hourly data for spatial interpolation</p>
+    <p>Downscale daily weather data to hourly</p>
     
 
     <pre class="usage"><span class='fu'>downscale</span>()</pre>
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>An R function which formats Australian Bureau of Meteorology (BoM) hourly
-weather data and Queensland's Scientific Information for Land Owners (SILO)
-daily weather data for validation of temporal downscaling of SILO temperature
-data to hourly values.</p>
+    <p>Downscales Australian Bureau of Meteorology (BOM) daily weather forecasts and
+Queensland's Scientific Information for Land Owners (SILO) daily weather data
+to hourly values.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: downscale()</span></div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>Qld_hourly</span> <span class='kw'>&lt;-</span> <span class='fu'>downscale</span>()
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

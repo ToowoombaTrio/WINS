@@ -2,20 +2,19 @@
 % Please edit documentation in R/downscale.R
 \name{downscale}
 \alias{downscale}
-\title{Downscale BoM weather and forecasts to hourly data for spatial interpolation}
+\title{Downscale daily weather data to hourly}
 \usage{
 downscale()
 }
 \description{
-Downscale BoM weather and forecasts to hourly data for spatial interpolation
+Downscale daily weather data to hourly
 }
 \details{
-An R function which formats Australian Bureau of Meteorology (BoM) hourly
-weather data and Queensland's Scientific Information for Land Owners (SILO)
-daily weather data for validation of temporal downscaling of SILO temperature
-data to hourly values.
+Downscales Australian Bureau of Meteorology (BOM) daily weather forecasts and
+Queensland's Scientific Information for Land Owners (SILO) daily weather data
+to hourly values.
 }
 \examples{
-\dontrun{downscale()}
+\dontrun{Qld_hourly <- downscale()}
 
 }

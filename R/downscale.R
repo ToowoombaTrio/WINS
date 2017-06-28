@@ -1,15 +1,13 @@
 
-#' Downscale BoM weather and forecasts to hourly data for spatial interpolation
-#'
+#' Downscale daily weather data to hourly
 #'
 #' @details
-#'An R function which formats Australian Bureau of Meteorology (BoM) hourly
-#'weather data and Queensland's Scientific Information for Land Owners (SILO)
-#'daily weather data for validation of temporal downscaling of SILO temperature
-#'data to hourly values.
+#'Downscales Australian Bureau of Meteorology (BOM) daily weather forecasts and
+#'Queensland's Scientific Information for Land Owners (SILO) daily weather data
+#'to hourly values.
 #'
 #' @examples
-#' \dontrun{downscale()}
+#' \dontrun{Qld_hourly <- downscale()}
 #'
 #' @importFrom foreach %dopar%
 #'
@@ -24,13 +22,14 @@ downscale <- function() {
   opt <- settings::options_manager(warn = 2,
                                    timeout = 300,
                                    stringsAsFactors = FALSE)
-  weather <- # Use previous weather data here
 
-  forecast <- # Use BOM forecast here
+  obs_weather <- # Use observed weather data here (SILO data)
 
-  i <- NULL
-  j <- NULL
-  lat <- df <- JDay <- NULL
+  for_weather <- bomrang::get_precis_forecast(state = "QLD")
+
+  # CRAN NOTE avoidance
+  i <- j <- lat <- df <- JDay <- NULL
+
   temp2 <- vector(mode = "list")
 
   cl <- parallel::makeCluster(2)
@@ -38,7 +37,7 @@ downscale <- function() {
 
   itx <- NULL
 
-  merged <- as.data.frame(data.table::rbindlist(foreach::foreach(i = itx) %dopar% {
+  merged <- as.data.frame(dplyr::bind_rows(foreach::foreach(i = itx) %dopar% {
 
     # Calculate hourly temps from SILO daily data ---------------------------
     SILO_hourly <- chillR::make_hourly_temps(lat, df)
@@ -79,10 +78,10 @@ downscale <- function() {
                                  Hour_01:Hour_24)
     SILO_hourly <- SILO_hourly[, -c(1:2)]
 
-    SILO_hourly <- plyr::arrange(SILO_hourly, JDay, Hour)
-    temp <- plyr::arrange(temp, JDay, Hour)
+    SILO_hourly <- dplyr::arrange(SILO_hourly, JDay, Hour)
+    temp <- dplyr::arrange(temp, JDay, Hour)
 
-    temp2[[i]] <- plyr::join(
+    temp2[[i]] <- dplyr::left_join(
       temp,
       SILO_hourly,
       by = c("station_number", "JDay",

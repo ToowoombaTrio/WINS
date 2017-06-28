@@ -19,7 +19,7 @@ Please watch our [YouTube video](https://m.youtube.com/watch?v=yECTDHx794E%20htt
 Quick Start
 ===========
 
-This package is only available from GitHub, not yet on CRAN, so you'll need *devtools* to install it.
+This package is only available from GitHub, it is easy to use *devtools* to install it.
 
 ``` r
 if (!require("devtools")) {

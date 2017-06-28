@@ -3,9 +3,11 @@ Type: Package
 Title: Crop Stress Weather Information Delivery System
 Version: 0.0.1.9000
 Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
-    email = "adamhsparks@gmail.com"),
+    email = "adamhsparks@gmail.com",
+    comment = "https://orcid.org/0000-0002-0061-8359"),
     person("Keith", "Pembleton", role = "aut",
-    email = "keith.pembleton@usq.edu.au"),
+    email = "keith.pembleton@usq.edu.au",
+    comment = "https://orcid.org/0000-0002-1896-4516"),
     person("Gordon", "Grundy", role = "ctb",
     email = "gordongrundy@gmail.com"))
 URL: https://github.com/ToowoombaTrio/WINS
@@ -18,8 +20,8 @@ Depends:
     R (>= 3.2.0)
 License: MIT + file LICENSE
 Imports:
+    bomrang,
     chillR,
-    data.table,
     doParallel,
     dplyr,
     fields,
@@ -30,16 +32,9 @@ Imports:
     iterators,
     mailR,
     parallel,
-    plyr,
-    purrr,
     raster,
-    readr,
-    reshape,
     settings,
-    stringr,
-    tibble,
-    tidyr,
-    xml2
+    tidyr
 RoxygenNote: 6.0.1
 Encoding: UTF-8
 NeedsCompilation: no
