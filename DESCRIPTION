@@ -22,6 +22,7 @@ License: MIT + file LICENSE
 Imports:
     bomrang,
     chillR,
+    data.table,
     doParallel,
     dplyr,
     fields,
@@ -30,9 +31,9 @@ Imports:
     ggplot2,
     lubridate,
     iterators,
-    mailR,
     parallel,
     raster,
+    rlang,
     settings,
     tidyr
 RoxygenNote: 6.0.1

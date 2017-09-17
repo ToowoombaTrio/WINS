@@ -4,7 +4,11 @@
 \alias{interpolate}
 \title{Interpolate}
 \usage{
-interpolate()
+interpolate(downscaled_temp)
+}
+\arguments{
+\item{downscaled_temp}{Hourly temperature data from
+\code{\link{make_hourly_forecast}}}
 }
 \description{
 Interpolate

@@ -14,15 +14,14 @@
 #' \dontrun{Qld_hourly <- make_hourly_forecast()}
 #'
 #' @author Adam H Sparks
-#'
+#' @importFrom rlang .data
 #' @export
 make_hourly_forecast <- function() {
-
   precis_forecast <- bomrang::get_precis_forecast(state = "AUS")
 
   # drop day zero from data, only need next 6 days of the forecast
   forecast_weather <-
-    precis_forecast[precis_forecast["index"] != 0,]
+    precis_forecast[precis_forecast["index"] != 0, ]
 
   # create dataframe with aac and lat/lon values only to joining with final data
   aac_lat_lon <- unique(precis_forecast[, c(5, 6, 7, 8)])
@@ -34,7 +33,7 @@ make_hourly_forecast <- function() {
   # set up the year_file object for make_hourly_temps() ------------------------
   forecast_weather <- tidyr::separate(
     data = forecast_weather,
-    col = start_time_local,
+    col = .data$start_time_local,
     into = c("Year", "Month", "Day"),
     sep = "-"
   )
@@ -72,11 +71,13 @@ make_hourly_forecast <- function() {
   downscaled_temp <-
     as.data.frame(data.table::rbindlist(downscaled_list))
   downscaled_temp <-
-    tidyr::gather(downscaled_temp, Hour, temperature,
-                  Hour_1:Hour_24)
+    tidyr::gather(downscaled_temp,
+                  .data$Hour,
+                  .data$temperature,
+                  .data$Hour_1:.data$Hour_24)
 
   downscaled_temp <- dplyr::left_join(downscaled_temp, aac_lat_lon,
-                                  by = "aac")
+                                      by = "aac")
 
   # split the downscaled data into individual dataframes in a list of Jdays ----
   downscaled_temp <-
