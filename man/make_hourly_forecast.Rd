@@ -4,7 +4,11 @@
 \alias{make_hourly_forecast}
 \title{Downscale BoM Précis Daily Forecast Data to Hourly Values}
 \usage{
-make_hourly_forecast()
+make_hourly_forecast(forecast)
+}
+\arguments{
+\item{forecast}{A BoM generated forecast as returned by
+\code{\link{get_precis_forecast}}.}
 }
 \value{
 A list of \code{data.frame} objects sorted by Julian day for spatial

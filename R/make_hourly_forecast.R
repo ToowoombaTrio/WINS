@@ -6,6 +6,9 @@
 #' Bureau of Meteorology (BOM) daily précis weather forecasts by using
 #' \code{\link{make_hourly_temps}} from \code{\link{chillR}}.
 #'
+#' @param forecast A BoM generated forecast as returned by
+#' \code{\link{get_precis_forecast}}.
+#'
 #' @return
 #' A list of \code{data.frame} objects sorted by Julian day for spatial
 #' interpolation.
@@ -16,8 +19,7 @@
 #' @author Adam H Sparks
 #' @importFrom rlang .data
 #' @export
-make_hourly_forecast <- function() {
-  precis_forecast <- bomrang::get_precis_forecast(state = "AUS")
+make_hourly_forecast <- function(forecast) {
 
   # drop day zero from data, only need next 6 days of the forecast
   forecast_weather <-
