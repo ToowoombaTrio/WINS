@@ -1,0 +1,25 @@
+---
+title: "WINS"
+author: "Adam H Sparks and Keith Pembleton"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{WINS}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+## Data Sources
+
+BoM
+
+Hole-filled  seamless SRTM data V4 aggregated to 250m available from
+<http://srtm.csi.cgiar.org>.
+
+## References
+
+Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled seamless SRTM
+data V4, International  Centre for Tropical  Agriculture (CIAT), available from
+http://srtm.csi.cgiar.org.
