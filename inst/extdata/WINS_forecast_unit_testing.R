@@ -11,7 +11,7 @@ library(mailR)
 
 #####project email adress and password
 project_email_address <- "wins.testing.usq@gmail.com"
-project_email_password <- "qwertyytrewq"
+project_email_password <- ""
 
 #####emails adresses for unit testing and subscriber reports
 report_email_adresses <-

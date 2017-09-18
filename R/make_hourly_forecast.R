@@ -14,7 +14,7 @@
 #' interpolation.
 #'
 #' @examples
-#' \dontrun{Qld_hourly <- make_hourly_forecast()}
+#' \dontrun{Qld_hourly <- make_hourly_forecast(forecast)}
 #'
 #' @author Adam H Sparks
 #' @importFrom rlang .data
@@ -23,10 +23,10 @@ make_hourly_forecast <- function(forecast) {
 
   # drop day zero from data, only need next 6 days of the forecast
   forecast_weather <-
-    precis_forecast[precis_forecast["index"] != 0, ]
+    forecast[forecast["index"] != 0, ]
 
   # create dataframe with aac and lat/lon values only to joining with final data
-  aac_lat_lon <- unique(precis_forecast[, c(5, 6, 7, 8)])
+  aac_lat_lon <- unique(forecast[, c(5, 6, 7, 8)])
 
   # extract the latitude values for hourly downscaling
   latitude <-
@@ -71,7 +71,7 @@ make_hourly_forecast <- function(forecast) {
   }
 
   downscaled_temp <-
-    as.data.frame(data.table::rbindlist(downscaled_list))
+    as.data.frame(dplyr::bind_rows(downscaled_list))
   downscaled_temp <-
     tidyr::gather(downscaled_temp,
                   .data$Hour,
