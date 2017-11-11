@@ -20,10 +20,9 @@
 #' @importFrom rlang .data
 #' @export
 make_hourly_forecast <- function(forecast) {
-
   # drop day zero from data, only need next 6 days of the forecast
   forecast_weather <-
-    forecast[forecast["index"] != 0, ]
+    forecast[forecast["index"] != 0,]
 
   # create dataframe with aac and lat/lon values only to joining with final data
   aac_lat_lon <- unique(forecast[, c(5, 6, 7, 8)])
@@ -72,17 +71,22 @@ make_hourly_forecast <- function(forecast) {
 
   downscaled_temp <-
     as.data.frame(dplyr::bind_rows(downscaled_list))
+
   downscaled_temp <-
-    tidyr::gather(downscaled_temp,
-                  .data$Hour,
-                  .data$temperature,
-                  .data$Hour_1:.data$Hour_24)
+    stats::reshape(
+      downscaled_temp,
+      direction = "long",
+      varying = 8:31,
+      timevar = "Hour",
+      v.names = "temperature"
+    )
 
   downscaled_temp <- dplyr::left_join(downscaled_temp, aac_lat_lon,
                                       by = "aac")
 
-  # split the downscaled data into individual dataframes in a list of Jdays ----
+  # split downscaled data into individual dataframes in a list of Jdays/Hours --
   downscaled_temp <-
-    split(downscaled_temp, downscaled_temp["JDay"])
+    split(downscaled_temp, downscaled_temp[, c("JDay", "Hour")])
+
   return(downscaled_temp)
 }
