@@ -14,7 +14,8 @@
 #' interpolation.
 #'
 #' @examples
-#' \dontrun{Qld_hourly <- make_hourly_forecast(forecast)}
+#'
+#' \dontrun{Qld_hourly <- make_hourly_forecast(x)}
 #'
 #' @author Adam H Sparks
 #' @importFrom rlang .data
