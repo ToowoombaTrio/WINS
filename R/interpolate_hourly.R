@@ -18,7 +18,6 @@
 #' @export
 
 interpolate_hourly <- function(downscaled_temp) {
-  # Load DEM data
 
   # perform thin plate splining on the temperature data
   spline_list <- lapply(downscaled_temp, function(x)
