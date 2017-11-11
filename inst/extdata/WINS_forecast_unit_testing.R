@@ -1,5 +1,5 @@
 ####packages required####
-#devtools::install_github("toowoombatrio/bomrang")
+#install.packages("toowoombatrio/bomrang")
 #install.packages("mailR")
 #install.packages("dplyr")
 
