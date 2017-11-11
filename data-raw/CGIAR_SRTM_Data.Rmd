@@ -15,7 +15,7 @@ uncompressed externally.
 
 After extracting the GeoTIFF file, it was imported into R.
 
-```{r, eval = TRUE}
+```{r import_DEM, eval = TRUE}
 Oz_dem <- raster::raster("~/Downloads/SRTM_SE_250m_TIF/SRTM_SE_250m.tif")
 raster::plot(Oz_dem)
 ```
@@ -27,7 +27,7 @@ data, using GADM data available through the
 Due to islands, etc. the GADM data, `Oz_shape`, is cropped, then the `Oz_dem`
 is cropped and masked using the `Oz_shape`.
 
-```{r, eval=TRUE}
+```{r crop_DEM, eval=TRUE}
 Oz_shape <- rnaturalearth::ne_countries(scale = 50,
                                         country = "Australia")
 
@@ -41,10 +41,9 @@ Oz_dem <- raster::mask(Oz_dem, Oz_shape)
 raster::plot(Oz_dem)
 ```
 
-SRTM data for Australia were saved as a package file for use in interpolating
-temperature values.
+Save the SRTM data for Australia for use in WINS.
 
-```{r, eval=TRUE}
+```{r save_DEM, eval=TRUE}
 devtools::use_data(Oz_dem, internal = TRUE)
 ```
 
