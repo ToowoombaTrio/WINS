@@ -23,7 +23,8 @@ Bureau of Meteorology (BOM) daily précis weather forecasts by using
 \code{\link{make_hourly_temps}} from \code{\link{chillR}}.
 }
 \examples{
-\dontrun{Qld_hourly <- make_hourly_forecast(forecast)}
+
+\dontrun{Qld_hourly <- make_hourly_forecast(x)}
 
 }
 \author{
