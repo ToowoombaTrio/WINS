@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Citation and Authors • WINS</title>
+<title>Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly — interpolate_hourly • WINS</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -20,9 +20,9 @@
 
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script>
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
+<script src="../pkgdown.js"></script>
   
   
 <!-- mathjax -->
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-citation-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,24 +47,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">WINS</a>
+      <a class="navbar-brand" href="../index.html">WINS</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="articles/WINS.html">Get Started</a>
+  <a href="../articles/WINS.html">Get Started</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
       
@@ -84,44 +84,55 @@
       </header>
 
       <div class="row">
-  <div class="contents col-md-9">
-
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Citation</h1>
+    <h1>Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly</h1>
     </div>
 
-    <p>Sparks A, Pembleton K and Grundy G (????).
-<em>WINS: Crop Stress Weather Information Delivery System in R</em>.
-<a href="https://github.com/ToowoombaTrio/WINS">https://github.com/ToowoombaTrio/WINS</a>. 
-</p>
-    <pre>@Manual{,
-  title = {{WINS}: Crop Stress Weather Information Delivery System in R},
-  author = {Adam Sparks and Keith Pembleton and Gordon Grundy},
-  url = {https://github.com/ToowoombaTrio/WINS},
-}</pre>
-    <div class="page-header">
-      <h1>Authors</h1>
-    </div>
+    
+    <p>Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly</p>
+    
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Adam Sparks</strong>. Author, maintainer.
-        <br /><small>https://orcid.org/0000-0002-0061-8359</small></p>
-      </li>
-      <li>
-        <p><strong>Keith Pembleton</strong>. Author.
-        <br /><small>https://orcid.org/0000-0002-1896-4516</small></p>
-      </li>
-      <li>
-        <p><strong>Gordon Grundy</strong>. Contributor.
-        </p>
-      </li>
+    <pre class="usage"><span class='fu'>interpolate_hourly</span>(<span class='no'>downscaled_temp</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>downscaled_temp</th>
+      <td><p>Hourly temperature data from
+<code><a href='make_hourly_forecast.html'>make_hourly_forecast</a></code></p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Interpolates forecast data that have been downscaled using the
+<code><a href='make_hourly_forecast.html'>make_hourly_forecast</a></code> function and returns a list of
+hourly #' surfaces for the next six-days forecast at 250x250m resolution.
+List names are the Julian day followed by the hour, e.g., "316.1" being the
+316th day of the year and the first hour of the 24 hours.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='no'>Qld_weather</span> <span class='kw'>&lt;-</span> <span class='fu'>interpolate_hourly</span>(<span class='no'>x</span>)
+<span class='co'># }</span><div class='input'>
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
-
 </div>
-
 
       <footer>
       <div class="copyright">
