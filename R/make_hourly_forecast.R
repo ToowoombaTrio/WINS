@@ -4,10 +4,10 @@
 #' @details
 #' Creates a dataframe of hourly temperature values based on the Australian
 #' Bureau of Meteorology (BOM) daily précis weather forecasts by using
-#' \code{\link{make_hourly_temps}} from \code{\link{chillR}}.
+#' \code{\link[chillR]{make_hourly_temps}}.
 #'
 #' @param forecast A BoM generated forecast as returned by
-#' \code{\link{get_precis_forecast}}.
+#' \code{\link[bomrang]{get_precis_forecast}}.
 #'
 #' @return
 #' A list of \code{data.frame} objects sorted by Julian day for spatial
