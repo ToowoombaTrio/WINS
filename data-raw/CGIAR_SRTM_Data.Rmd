@@ -1,0 +1,50 @@
+---
+title: "CGIAR SRTM 250m Digital Elevation Model"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Hole-filled Shuttle Radar Topography Mission (SRTM) data
+
+Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM_SE_250m) were
+downloaded using the _raster_ packages `getData()` function.
+
+## Hole-filled Shuttle Radar Topography Mission (SRTM) data
+
+Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM_SE_250m) were
+downloaded using the _raster_ packages `getData()` function.
+
+```{r get_dem, eval = TRUE}
+Oz_dem <- raster::getData(name = "alt", country = "AUS", mask = TRUE)
+raster::plot(Oz_dem)
+```
+
+The SRTM data were saved for use as package data in _WINS_ so that it will not
+need to be downloaded every time data are interpolated in the future.
+
+```{r save_data, eval=TRUE}
+save(Oz_dem, file = "../inst/extdata/Oz_dem.rda", compress = "bzip2")
+```
+
+Cleanup alt files in Rmd directory.
+
+```{r cleanup, eval = TRUE}
+unlink("AUS_msk_alt.grd")
+unlink("AUS_msk_alt.gri")
+unlink("AUS_msk_alt.vrt")
+```
+
+## References
+
+Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled seamless SRTM
+data V4, International  Centre for Tropical  Agriculture (CIAT), available from
+http://srtm.csi.cgiar.org.
+
+## System Information
+
+```{r sysinfo, eval=TRUE}
+sessioninfo::session_info()
+```
