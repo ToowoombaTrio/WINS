@@ -12,7 +12,7 @@ Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
     email = "gordongrundy@gmail.com"))
 URL: https://github.com/ToowoombaTrio/WINS
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
-Description: Identifies likely heat or cold stress events in crops and send an
+Description: Identify likely heat or cold stress events in crops and send an
     alert via e-mail to subscribers. Hourly weather data, both observed and
     forecasted by Australian Bureau of Meteorology (BOM) are generated and
     interpolated for Queensland only.
