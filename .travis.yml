@@ -1,8 +1,36 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+language: r
+sudo: required
+dist: trusty
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
+r_binary_packages:
+   - rgdal
+   - rgeos
 
-language: R
-sudo: false
-cache: packages
+## Set up the matrix of different runs
+env:
+  matrix:
+  - r: release
+    not_cran: true
+    r_check_args: "--no-manual"
+  - r: release
+    not_cran: false
+    r_check_args: "--no-manual --as--cran"
+
+script:
+  - |
+    R CMD build .
+    travis_wait 20 R CMD check bomrang*tar.gz
+after_failure:
+  - ./pkg-build.sh dump_logs
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - travis_wait 20 Rscript -e 'covr::codecov()'
