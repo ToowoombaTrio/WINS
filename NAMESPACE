@@ -3,6 +3,7 @@
 export(interpolate_hourly)
 export(mae)
 export(make_hourly_forecast)
+export(mungbean_stress)
 export(rmse)
 export(unit_test_forecast)
 importFrom(rlang,.data)

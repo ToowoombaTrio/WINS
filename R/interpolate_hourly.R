@@ -1,5 +1,4 @@
 
-
 #' Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly
 #'
 #' @details
