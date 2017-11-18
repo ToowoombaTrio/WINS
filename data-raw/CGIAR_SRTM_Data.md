@@ -1,28 +1,46 @@
 CGIAR SRTM 250m Digital Elevation Model
 ================
 
-Hole-filled Shuttle Radar Topography Mission (SRTM) data
---------------------------------------------------------
+## Hole-filled Shuttle Radar Topography Mission (SRTM) data
 
-Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM\_SE\_250m) were downloaded using the *raster* packages `getData()` function.
+Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM\_SE\_250m)
+were downloaded using the *raster* packages `getData()` function.
 
-Hole-filled Shuttle Radar Topography Mission (SRTM) data
---------------------------------------------------------
+## Hole-filled Shuttle Radar Topography Mission (SRTM) data
 
-Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM\_SE\_250m) were downloaded using the *raster* packages `getData()` function.
+Hole-filled seamless SRTM data V4 aggregated to 250m (SRTM\_SE\_250m)
+were downloaded using the *raster* packages `getData()` function.
 
 ``` r
+# fetch DEM
 Oz_dem <- raster::getData(name = "alt", country = "AUS", mask = TRUE)
+
+# crop to remove islands
+Oz_dem <- raster::crop(Oz_dem, raster::extent(114, 155, -45, -9))
+
+# plot to check
 raster::plot(Oz_dem)
 ```
 
-![](CGIAR_SRTM_Data_files/figure-markdown_github/get_dem-1.png)
+![](CGIAR_SRTM_Data_files/figure-gfm/get_dem-1.png)<!-- -->
 
-The SRTM data were saved for use as package data in *WINS* so that it will not need to be downloaded every time data are interpolated in the future.
+The SRTM data were saved as a GeoTIFF file for use as package data in
+*WINS* so that it will not need to be downloaded every time data are
+interpolated in the future.
 
 ``` r
-save(Oz_dem, file = "../inst/extdata/Oz_dem.rda", compress = "bzip2")
+raster::writeRaster(Oz_dem, filename = "../inst/extdata/Oz_dem",
+                    overwrite = TRUE)
 ```
+
+    ## class       : RasterLayer 
+    ## dimensions  : 4308, 4920, 21195360  (nrow, ncol, ncell)
+    ## resolution  : 0.008333333, 0.008333333  (x, y)
+    ## extent      : 114, 155, -45, -9.1  (xmin, xmax, ymin, ymax)
+    ## coord. ref. : +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0 
+    ## data source : /Users/adamsparks/Development/WINS/inst/extdata/Oz_dem.grd 
+    ## names       : AUS_msk_alt 
+    ## values      : -43, 2143  (min, max)
 
 Cleanup alt files in Rmd directory.
 
@@ -32,13 +50,14 @@ unlink("AUS_msk_alt.gri")
 unlink("AUS_msk_alt.vrt")
 ```
 
-References
-----------
+## References
 
-Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled seamless SRTM data V4, International Centre for Tropical Agriculture (CIAT), available from <http://srtm.csi.cgiar.org>.
+Jarvis A., H.I. Reuter, A. Nelson, E. Guevara, 2008, Hole-filled
+seamless SRTM data V4, International Centre for Tropical Agriculture
+(CIAT), available from
+    <http://srtm.csi.cgiar.org>.
 
-System Information
-------------------
+## System Information
 
 ``` r
 sessioninfo::session_info()
@@ -53,7 +72,7 @@ sessioninfo::session_info()
     ##  language (EN)                        
     ##  collate  en_AU.UTF-8                 
     ##  tz       Australia/Brisbane          
-    ##  date     2017-11-11                  
+    ##  date     2017-11-18                  
     ## 
     ## ─ Packages ──────────────────────────────────────────────────────────────
     ##  package     * version date       source                                 
@@ -65,14 +84,14 @@ sessioninfo::session_info()
     ##  knitr         1.17    2017-08-10 cran (@1.17)                           
     ##  lattice       0.20-35 2017-03-25 CRAN (R 3.4.2)                         
     ##  magrittr      1.5     2014-11-22 CRAN (R 3.4.2)                         
-    ##  raster        2.5-8   2016-06-02 CRAN (R 3.4.2)                         
+    ##  raster        2.6-7   2017-11-13 cran (@2.6-7)                          
     ##  Rcpp          0.12.13 2017-09-28 CRAN (R 3.4.2)                         
     ##  rgdal         1.2-15  2017-10-30 cran (@1.2-15)                         
-    ##  rmarkdown     1.7.4   2017-11-11 Github (rstudio/rmarkdown@b992518)     
+    ##  rmarkdown     1.8     2017-11-18 Github (rstudio/rmarkdown@6757c4a)     
     ##  rprojroot     1.2     2017-01-16 cran (@1.2)                            
     ##  sessioninfo   1.0.0   2017-06-21 CRAN (R 3.4.2)                         
     ##  sp            1.2-5   2017-06-29 CRAN (R 3.4.2)                         
-    ##  stringi       1.1.5   2017-04-07 CRAN (R 3.4.2)                         
+    ##  stringi       1.1.6   2017-11-17 cran (@1.1.6)                          
     ##  stringr       1.2.0   2017-02-18 CRAN (R 3.4.2)                         
     ##  withr         2.1.0   2017-11-01 cran (@2.1.0)                          
     ##  yaml          2.1.14  2016-11-12 cran (@2.1.14)
