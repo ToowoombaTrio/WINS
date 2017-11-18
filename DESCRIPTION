@@ -27,6 +27,7 @@ Imports:
     foreign,
     lubridate,
     mailR,
+    parallel,
     raster,
     rlang,
     stats,
