@@ -1,4 +1,7 @@
 
+
+
+
 #' Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly
 #'
 #' @details
@@ -18,22 +21,24 @@
 #' @export
 
 interpolate_hourly <- function(downscaled_temp) {
-
   # Load DEM
-  Oz_dem <- NULL
-  load(system.file("extdata", "Oz_dem.rda", package = "WINS"))
+  Oz_dem <- raster::raster(system.file("extdata", "Oz_dem.grd",
+                                       package = "WINS"))
 
   # perform thin plate splining on the temperature data
-  spline_list <- lapply(downscaled_temp, function(x)
-    fields::Tps(x[c("lon", "lat", "elev")], x["temperature"]))
+  spline_list <- parallel::mclapply(downscaled_temp, function(x)
+    fields::Tps(x[c("lon", "lat", "elev")],
+                x["temperature"]),
+    mc.cores = 4)
 
   # interpolate the daily/hourly surfaces
-  tps_pred <- lapply(spline_list, function(y)
+  tps_pred <- parallel::mclapply(spline_list, function(y)
     raster::interpolate(
       model = y,
       object = Oz_dem,
       xyOnly = FALSE
-    ))
+    ),
+    mc.cores = 4)
 
   # return a list of interpolated surfaces by day by hour
   return(tps_pred)
