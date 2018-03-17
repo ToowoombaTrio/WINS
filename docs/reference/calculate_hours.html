@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Root Mean Absolute Error — mae • WINS</title>
+<title>Calculate Hours of Temperature Stress — calculate_hours • WINS</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Calculate Root Mean Absolute Error — mae" />
+<meta property="og:title" content="Calculate Hours of Temperature Stress — calculate_hours" />
 
-<meta property="og:description" content="Function that calculates Root Mean Absolute Error (MAE)" />
+<meta property="og:description" content="Calculate Hours of Temperature Stress" />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -90,42 +90,83 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Root Mean Absolute Error</h1>
-    <small>Source: <a href='https:/github.com/ToowoombaTrio/WINS/blob/master/R/calculate_error.R'><code>R/calculate_error.R</code></a></small>
+    <h1>Calculate Hours of Temperature Stress</h1>
+    <small>Source: <a href='https:/github.com/ToowoombaTrio/WINS/blob/master/R/calculate_stress_hours.R'><code>R/calculate_stress_hours.R</code></a></small>
     </div>
 
     
-    <p>Function that calculates Root Mean Absolute Error (MAE)</p>
+    <p>Calculate Hours of Temperature Stress</p>
     
 
-    <pre class="usage"><span class='fu'>mae</span>(<span class='no'>actual</span>, <span class='no'>predicted</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_hours</span>(<span class='no'>interpolated_surfaces</span>, <span class='no'>location</span>, <span class='no'>threshold</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>actual</th>
-      <td><p>observed values</p></td>
+      <th>location</th>
+      <td><p>A given location for which the temperature threshold is to
+be checked against.  Should be provided as an <code>points</code> or
+<code>polygon</code> object.</p></td>
     </tr>
     <tr>
-      <th>predicted</th>
-      <td><p>predicted values</p></td>
+      <th>threshold</th>
+      <td><p>A numeric value against which interpolated temperatures are
+checked for exceeding.</p></td>
+    </tr>
+    <tr>
+      <th>forecast_surface</th>
+      <td><p>A list of interpolated hourly temperature surfaces
+from <code><a href='interpolate_hourly.html'>interpolate_hourly</a></code>.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Calculates hours temperature stress given a list of interpolated surfaces of
+a BoM six-day forecast from <a href='interpolate_hourly.html'>interpolate_hourly</a>.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Example data</span>
-<span class='no'>actual</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>4</span>, <span class='fl'>6</span>, <span class='fl'>9</span>, <span class='fl'>10</span>, <span class='fl'>4</span>, <span class='fl'>6</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>8</span>, <span class='fl'>7</span>)
-<span class='no'>predicted</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>8</span>, <span class='fl'>10</span>, <span class='fl'>4</span>, <span class='fl'>8</span>, <span class='fl'>4</span>, <span class='fl'>9</span>, <span class='fl'>8</span>, <span class='fl'>9</span>)
-<span class='fu'>mae</span>(<span class='no'>actual</span>, <span class='no'>predicted</span>)</div><div class='output co'>#&gt; [1] 0.8</div><div class='input'>
+    <pre class="examples"><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>sp</span>)
+<span class='no'>locations</span> <span class='kw'>&lt;-</span>
+ <span class='fu'>structure</span>(
+   <span class='fu'>list</span>(
+     <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+       <span class='fl'>151.9134</span>,
+       <span class='fl'>151.7387</span>
+     ),
+     <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='fu'>c</span>(
+       -<span class='fl'>27.7952</span>,
+       -<span class='fl'>27.5425</span>
+     )
+   ),
+   <span class='kw'>.Names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"longitude"</span>,
+              <span class='st'>"latitude"</span>),
+   <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>,
+   <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, -<span class='fl'>2L</span>))
+
+<span class='no'>xy</span> <span class='kw'>&lt;-</span> <span class='no'>locations</span>[, <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>)]
+
+<span class='no'>locations</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/sp/topics/SpatialPoints'>SpatialPointsDataFrame</a></span>(
+ <span class='kw'>coords</span> <span class='kw'>=</span> <span class='no'>xy</span>,
+ <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>location</span>,
+ <span class='kw'>proj4string</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/sp/topics/CRS-class'>CRS</a></span>(<span class='st'>"+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"</span>)
+)
+
+<span class='no'>mungbean_stress</span> <span class='kw'>&lt;-</span> <span class='fu'>calculate_hours</span>(<span class='no'>x</span>, <span class='kw'>location</span> <span class='kw'>=</span> <span class='no'>locations</span>, <span class='fl'>30</span>)
+<span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#details">Details</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

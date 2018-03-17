@@ -8,8 +8,14 @@
 <title>Crop Stress Weather Information Delivery System • WINS</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Crop Stress Weather Information Delivery System">
+<meta property="og:description" content="Identify likely heat or cold stress events in crops and send an
+    alert via e-mail to subscribers. Hourly weather data, both observed and
+    forecasted by Australian Bureau of Meteorology (BOM) are generated and
+    interpolated for Queensland only.">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -41,7 +47,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -79,7 +85,7 @@
 <p>The <em>WINS</em> project (nee <a href="https://github.com/ToowoombaTrio/John_Conner"><em>John_Conner</em></a>) was initiated by the Toowoomba Trio to tackle a major and growing problem faced by Queensland vegetable growers. This challenge is identifying and responding to heat stress in their crops. High temperatures can cause considerable stress to crops, reducing yields and the quality of the produce grown. However, if the stress is identified early enough remedial action can be taken to minimise the damage and save the crop. <em>WINS</em> provides a timely warning system for farmers when a heat stress event has likely occurred. The <em>WINS</em> project is built in the R environment, an open source statistical programing environment and utilises Australia Bureau of Meteorology (BOM) weather data.</p>
 <p>Please watch our <a href="https://m.youtube.com/watch?v=yECTDHx794E%20https://github.com/ToowoombaTrio/John_Conner">YouTube video</a> describing the <em>John_Conner</em> project for more on how <em>WINS</em> was created and works.</p>
 <div class="figure">
-<img src="reference/figures/Fit_hexbin.png" alt="Comparison of hourly interpolated values versus hourly BoM data for one year"><p class="caption">Comparison of hourly interpolated values versus hourly BoM data for one year</p>
+<img src="/Users/adamsparks/Development/WINS/man/figures/Fit_hexbin.png" alt="Comparison of hourly interpolated values versus hourly BoM data for one year"><p class="caption">Comparison of hourly interpolated values versus hourly BoM data for one year</p>
 </div>
 </div>
 </div>
@@ -87,19 +93,19 @@
 <h1 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick Start</h1>
 <p>This package is only available from GitHub, it is easy to use <em>devtools</em> to install it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>)) {
-  <span class="kw">install.packages</span>(<span class="st">"devtools"</span>, <span class="dt">repos =</span> <span class="st">"http://cran.rstudio.com/"</span>) 
-  <span class="kw">library</span>(<span class="st">"devtools"</span>)
-}
-
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ToowoombaTrio/WINS"</span>)
-<span class="kw">library</span>(<span class="st">"WINS"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"devtools"</span>)) {</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">install.packages</span>(<span class="st">"devtools"</span>, <span class="dt">repos =</span> <span class="st">"http://cran.rstudio.com/"</span>) </a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw">library</span>(<span class="st">"devtools"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ToowoombaTrio/WINS"</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw">library</span>(<span class="st">"WINS"</span>)</a></code></pre></div>
 </div>
 <div id="meta" class="section level1">
 <h1 class="hasAnchor">
 <a href="#meta" class="anchor"></a>Meta</h1>
 <p>If you find bugs or other issues, please report them to us using <a href="https://github.com/ToowoombaTrio/WINS/issues" class="uri">https://github.com/ToowoombaTrio/WINS/issues</a>.</p>
-<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -114,17 +120,15 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></p>
 <h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing WINS</a></li>
 </ul>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Adam Sparks <br><small class="roles"> Author, maintainer </small> <br><small>(https://orcid.org/0000-0002-0061-8359)</small>
-</li>
-<li>Keith Pembleton <br><small class="roles"> Author </small> <br><small>(https://orcid.org/0000-0002-1896-4516)</small>
-</li>
+<li>Adam Sparks <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0061-8359" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
+<li>Keith Pembleton <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1896-4516" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
@@ -142,7 +146,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

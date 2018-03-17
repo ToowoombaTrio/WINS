@@ -18,13 +18,14 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -64,7 +65,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -110,31 +111,31 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="interpolate_hourly.html">interpolate_hourly</a></code> </p>
+            <p><code><a href="calculate_hours.html">calculate_hours()</a></code> </p>
+          </td>
+          <td><p>Calculate Hours of Temperature Stress</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="interpolate_hourly.html">interpolate_hourly()</a></code> </p>
           </td>
           <td><p>Interpolate BoM Précis Daily Forecast Data That Have Been Downscaled to Hourly</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="mae.html">mae</a></code> </p>
+            <p><code><a href="mae.html">mae()</a></code> </p>
           </td>
           <td><p>Calculate Root Mean Absolute Error</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="make_hourly_forecast.html">make_hourly_forecast</a></code> </p>
+            <p><code><a href="make_hourly_forecast.html">make_hourly_forecast()</a></code> </p>
           </td>
           <td><p>Downscale BoM Précis Daily Forecast Data to Hourly Values</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="mungbean_stress.html">mungbean_stress</a></code> </p>
-          </td>
-          <td><p>Calculate Hours of Mungbean Heat Stress</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="rmse.html">rmse</a></code> </p>
+            <p><code><a href="rmse.html">rmse()</a></code> </p>
           </td>
           <td><p>Calculate Root Mean Square Error</p></td>
         </tr><tr>
@@ -146,7 +147,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="unit_test_forecast.html">unit_test_forecast</a></code> </p>
+            <p><code><a href="unit_test_forecast.html">unit_test_forecast()</a></code> </p>
           </td>
           <td><p>Test BoM Precis Forecast for Changes and Send an Alert on Changes or Failure</p></td>
         </tr>
@@ -169,7 +170,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -177,3 +178,4 @@
 
   </body>
 </html>
+
