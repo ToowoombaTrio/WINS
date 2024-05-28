@@ -4,10 +4,11 @@
   "identifier": "WINS",
   "description": "Identifies likely heat or cold stress events in crops and send an alert via e-mail to subscribers. The chillR package is used to generate hourly weather data from Australia Bureau of Meteorology (BOM).",
   "name": "WINS: Crop Stress Weather Information Delivery System",
+  "relatedLink": "https://toowoombatrio.github.io/WINS/",
   "codeRepository": "https://github.com/ToowoombaTrio/WINS",
   "issueTracker": "https://github.com/ToowoombaTrio/WINS/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.1.9000",
+  "version": "0.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -369,7 +370,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "126.489KB",
+  "fileSize": "126.57KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -392,7 +393,7 @@
       ],
       "name": "{WINS}: Crop Stress Weather Information Delivery System in R",
       "url": "https://github.com/ToowoombaTrio/WINS",
-      "description": "R package version 0.0.1.9000"
+      "description": "R package version 0.0.1"
     }
   ],
   "releaseNotes": "https://github.com/ToowoombaTrio/WINS/blob/master/NEWS.md",
