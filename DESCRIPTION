@@ -1,23 +1,23 @@
-Package: WINS
 Type: Package
+Package: WINS
 Title: Crop Stress Weather Information Delivery System
 Version: 0.0.1.9000
-Authors@R: c(person("Adam", "Sparks", role = c("aut", "cre"),
-    email = "adamhsparks@gmail.com",
-    comment = c(ORCID = "0000-0002-0061-8359")),
-    person("Keith", "Pembleton", role = "aut",
-    email = "keith.pembleton@usq.edu.au",
-    comment = c(ORCID = "0000-0002-1896-4516")),
-    person("Gordon", "Grundy", role = "ctb",
-    email = "gordongrundy@gmail.com"))
-URL: https://github.com/ToowoombaTrio/WINS
+Authors@R: c(
+    person("Adam", "Sparks", , "adamhsparks@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0061-8359")),
+    person("Keith", "Pembleton", , "keith.pembleton@usq.edu.au", role = "aut",
+           comment = c(ORCID = "0000-0002-1896-4516")),
+    person("Gordon", "Grundy", , "gordongrundy@gmail.com", role = "ctb")
+  )
+Description: Identifies likely heat or cold stress events in crops and
+    send an alert via e-mail to subscribers. The chillR package is used to
+    generate hourly weather data from Australia Bureau of Meteorology
+    (BOM).
+License: MIT + file LICENSE
+URL: https://github.com/ToowoombaTrio/WINS, https://toowoombatrio.github.io/WINS/
 BugReports: https://github.com/ToowoombaTrio/WINS/issues
-Description: Identifies likely heat or cold stress events in crops and send an
-    alert via e-mail to subscribers. The chillR package is used to generate
-    hourly weather data from Australia Bureau of Meteorology (BOM).
 Depends:
     R (>= 3.2.0)
-License: MIT + file LICENSE
 Imports:
     chillR,
     data.table,
@@ -27,8 +27,8 @@ Imports:
     foreach,
     foreign,
     ggplot2,
-    lubridate,
     iterators,
+    lubridate,
     mailR,
     parallel,
     plyr,
@@ -41,14 +41,15 @@ Imports:
     tibble,
     tidyr,
     xml2
-RoxygenNote: 6.0.1
-Encoding: UTF-8
-NeedsCompilation: no
-LazyData: TRUE
-ByteCompile: TRUE
 Suggests:
+    covr,
     knitr,
     rmarkdown,
-    testthat,
-    covr
-VignetteBuilder: knitr
+    testthat
+VignetteBuilder: 
+    knitr
+ByteCompile: TRUE
+Encoding: UTF-8
+LazyData: TRUE
+NeedsCompilation: no
+RoxygenNote: 7.3.1

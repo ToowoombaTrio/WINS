@@ -6,7 +6,10 @@
 ^revdep$
 ^README\.Rmd$
 ^README-.*\.png$
-^\Mitsubishi
 ^codecov\.yml$
 ^docs$
 ^CONDUCT\.md$
+^\.github$
+^codemeta\.json$
+^_pkgdown\.yml$
+^pkgdown$
